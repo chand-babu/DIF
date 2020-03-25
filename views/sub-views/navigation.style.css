@@ -1,0 +1,31 @@
+.navigation, nav {
+    display: flex !important;
+    padding: 10px !important;
+    text-transform: uppercase;
+    box-shadow: 0px 4px 8px #cddce5;
+    background: #e8eff5;
+    z-index: 9999;
+}
+
+.navigation > .logo {
+    width: 20%;
+    margin: auto;
+}
+
+.navigation > ul {
+    display: flex;
+    list-style-type: none;
+    justify-content: flex-end;
+    align-items: center;
+    width: 80%;
+    margin-bottom: 0px !important;
+}
+
+.navigation > ul > li {
+    margin: 0px 15px;
+    cursor: pointer;
+}
+
+.navigation ul li:hover {
+    font-weight: bold;
+}
