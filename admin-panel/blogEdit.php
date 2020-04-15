@@ -53,15 +53,22 @@ require './shared/header.php';
                                             <option value="0">Inactive</option>
                                         </select>
                                     </div>
-                                    <div class="col-12">
-                                        <label for="title">Title</label>
+                                    <div class="col-4">
+                                        <div class="form-group status-block">
+                                            <label for="title">Category <span class="text-danger">*</span></label>
+                                            <select name="category" id="listCat" class="form-control">
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-8">
+                                        <label for="title">Title <span class="text-danger">*</span></label>
                                         <input type="hidden" id="blg-id" name="blg_id">
                                         <input type="text" id="title" name="title" class="form-control" placeholder="Enter Blog Title">
                                         <div id="title-err" class="text-danger" style="display:none;">Required</div>
                                     </div>
                                     
                                     <div class="col-4 mt-3">
-                                        <label for="title">Image</label>
+                                        <label for="title">Image <span class="text-danger">*</span></label>
                                         <div>
                                             <img id="image-pre" src="./../assets/images/temp/no-image.jpg" width="100%" height="210" alt="">
                                         </div>
@@ -74,15 +81,26 @@ require './shared/header.php';
                                     </div>
                                     <div class="col-8 mt-3">
                                         <div class="form-group">
-                                            <label for="desc">Title Description</label>
+                                            <label for="desc">Title Description <span class="text-danger">*</span></label>
                                             <textarea type="text" id="desc" name="description" class="form-control"
                                             placeholder="Enter Description" rows="10"></textarea>
                                             <div id="desc-err" class="text-danger" style="display:none;">Required</div>
                                         </div>
                                     </div>
+                                    <div class="col-4">
+                                        <label for="title">Image Alt Name</label>
+                                        <input type="text" id="image-alt" name="image_alt" class="form-control" placeholder="Enter Image Name">
+                                        <div id="image-alt-err" class="text-danger" style="display:none;">Required</div>
+                                    </div>
+                                    <div class="col-8">
+                                        <label for="title">Post url</label>
+                                        <input type="text" id="post-url" name="post_url" class="form-control"
+                                        placeholder="eg: happy-holi-festival-to-all">
+                                        <div id="post-url-err" class="text-danger" style="display:none;">URL exist please try unique</div>
+                                    </div>
                                     <div class="col-12 mt-3">
                                         <div class="form-group">
-                                            <label for="desc">Content</label>
+                                            <label for="desc">Content <span class="text-danger">*</span></label>
                                             <textarea type="text" id="content" name="content_description" class="form-control"
                                             rows="20"></textarea>
                                             <div id="content-err" class="text-danger" style="display:none;">Required</div>
@@ -131,6 +149,27 @@ require './shared/footer.php';
 ?>
 <script>
     $(document).ready(function() {
+        $("#post-url").focusout(function(){
+            $.ajax({
+                type: "POST",
+                url: './mvc/action/blog/checkPostUrlAction.php?id=' +  $("#post-url").val(),
+                processData: false,
+                contentType: false,
+                success: function(data) {
+                    let value = JSON.parse(data);
+                    let errValidation = 'none';
+                    if (value.result) {
+                        errValidation = value.data.length > 0 ? 'block' : 'none';
+                    }
+                    $("#post-url-err").css('display',  errValidation ); 
+                    //console.log();
+                },
+                error: function(jqXHR, exception) {
+                    console.log(err);
+                }
+            });
+        });
+
         $('#content').summernote({height: 500, 
             focus: true,
             callbacks: {
@@ -155,10 +194,13 @@ require './shared/footer.php';
                             location.href = './blog.php';
                         }, 3000);
                     } else {
+                        categorySelection(getData);
                         $('#blg-status').val(getData.blg_status);
                         $('#blg-id').val(getData.blg_id);
                         $('#title').val(getData.title);
                         $('#desc').val(getData.description);
+                        $('#image-alt').val(getData.image_alt);
+                        $('#post-url').val(getData.post_url);
                         //$('#content').val(getData.content);
                         $('#content').summernote('code', getData.content);
                         $('#image-name').val(JSON.stringify([getData.image_lg, getData.image_sm]));
@@ -247,6 +289,27 @@ require './shared/footer.php';
             }
         });
     });
+
+    function categorySelection(dataSet){
+        $.ajax({
+            type: "POST",
+            url: './mvc/action/category/categoryListAction.php',
+            processData: false,
+            contentType: false,
+            success: function(data) {
+                var options = '<option value="" disabled><strong>-- Select Categort --</strong></option>';
+                $(JSON.parse(data)).each(function(index, value) {
+                    var select = dataSet.cat_id == value.cat_id ? 'selected': '';
+                    options += '<option value="' + value.cat_id + '" '+ select +'>' + value.name + '</option>';
+                });
+                $('#listCat').html(options);
+                //console.log(data);
+            },
+            error: function(jqXHR, exception) {
+                console.log(err);
+            }
+        });
+    }
 
     function modelMessageCall(title, data){
         $("#myModal").modal();

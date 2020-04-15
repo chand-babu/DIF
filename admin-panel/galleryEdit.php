@@ -58,19 +58,19 @@ require './shared/header.php';
                                     </div>
                                     <div class="col-4">
                                         <div class="form-group status-block">
-                                            <label for="title">Category</label>
+                                            <label for="title">Category <span class="text-danger">*</span></label>
                                             <select name="category" id="listCat" class="form-control">
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-8">
-                                        <label for="title">Title</label>
+                                        <label for="title">Title <span class="text-danger">*</span></label>
                                         <input type="hidden" id="gal-id" name="gal_id" value="">
                                         <input type="text" id="title" name="title" class="form-control" placeholder="Enter Gallery Title">
                                         <div id="title-err" class="text-danger">Required</div>
                                     </div>
                                     <div class="col-4 mt-3">
-                                        <label for="title">Featured Image</label>
+                                        <label for="title">Featured Image <span class="text-danger">*</span></label>
                                         <div>
                                             <img id="image-pre" src="./../assets/images/temp/no-image.jpg" width="100%" height="200" alt="">
                                         </div>
@@ -83,12 +83,25 @@ require './shared/header.php';
                                     </div>
                                     <div class="col-8 mt-3">
                                         <div class="form-group">
-                                            <label for="imageDesc">Title Description</label>
+                                            <label for="imageDesc">Title Description <span class="text-danger">*</span></label>
                                             <textarea type="text" id="imageDesc" name="imageDesc" class="form-control"
                                             placeholder="Enter Image Description" rows="8"></textarea>
                                             <div id="desc-err" class="text-danger">Required</div>
                                         </div>
                                     </div>
+                                    <div class="col-4">
+                                        <label for="title">Featured Image Name</label>
+                                        <input type="text" id="image-alt" name="imageAlt" class="form-control" 
+                                        placeholder="Featured Image Alt Name">
+                                        <div id="image-alt-err" class="text-danger" style="display:none;">Required</div>
+                                    </div>
+                                    <div class="col-8">
+                                        <label for="title">Post url</label>
+                                        <input type="text" id="post-url" name="postUrl" class="form-control" 
+                                        placeholder="eg: happy-holi-festival-to-all">
+                                        <div id="post-url-err" class="text-danger" style="display:none;">URL exist please try unique</div>
+                                    </div>
+                                    
                                 </div>
                                 <div id="image-block-set">
                                     <div class="row mt-4 gallery-block" id="gallery-block-1">
@@ -97,7 +110,11 @@ require './shared/header.php';
                                                 <i id="cross-color" class="text-secondary fas fa-times"></i>
                                             </span>
                                         </div>
-                                        <div class="col-4 mb-2 mt-4">
+                                        <div class="col-4">
+                                            <div class="mb-3"> 
+                                                <label for="title">Image alt name</label>
+                                                <input type="text" id="image-alt-1" name="imageAlt-1" class="form-control" placeholder="Enter Image Name">
+                                            </div>
                                             <label for="title">Image preview</label>
                                             <div>
                                                 <img id="image-pre-1" src="./../assets/images/temp/no-image.jpg" width="100%" height="200" alt="">
@@ -190,6 +207,27 @@ require './shared/footer.php';
 ?>
 <script>
     $(document).ready(function() {
+        $("#post-url").focusout(function(){
+            $.ajax({
+                type: "POST",
+                url: './mvc/action/blog/checkPostUrlAction.php?id=' +  $("#post-url").val(),
+                processData: false,
+                contentType: false,
+                success: function(data) {
+                    let value = JSON.parse(data);
+                    let errValidation = 'none';
+                    if (value.result) {
+                        errValidation = value.data.length > 0 ? 'block' : 'none';
+                    }
+                    $("#post-url-err").css('display',  errValidation ); 
+                    //console.log();
+                },
+                error: function(jqXHR, exception) {
+                    console.log(err);
+                }
+            });
+        });
+
         $('#title-err').css('display','none');
         $('#desc-err').css('display','none');
         var id = location.href.substring(location.href.lastIndexOf('=') + 1);
@@ -288,6 +326,8 @@ require './shared/footer.php';
         $('#gal-id').val(data.gal_id);
         $('#title').val(data.title);
         $('#imageDesc').val(data.description);
+        $('#image-alt').val(data.image_alt);
+        $('#post-url').val(data.post_url);
         $('#image-name').val(JSON.stringify([data.featured_image_lg, data.featured_image_sm]));
         $('#image-pre').attr('src', data.featured_image_sm ? './..' + data.featured_image_sm : './../assets/images/temp/no-image.jpg');
         $('#imageDesc').summernote({height: 155, focus: true});
@@ -301,6 +341,7 @@ require './shared/footer.php';
                 $('#image-name-' + (index + 1)).val(item['imageName']);
                 $('#image-pre-' + (index + 1)).attr('src', JSON.parse(item['imageName'])[1] ? './..' + JSON.parse(item['imageName'])[1]:'./../assets/images/temp/no-image.jpg');
                 $('#imageDesc-' + (index + 1)).summernote({height: 155, focus: true});
+                $('#image-alt-' + (index + 1)).val(item['imageAlt']);
             } else {
                 // console.log(item);
                 $('#imageTitle-1').val(item['imageTitle']);
@@ -308,6 +349,7 @@ require './shared/footer.php';
                 $('#image-name-1').val(item['imageName']);
                 $('#image-pre-1').attr('src', JSON.parse(item['imageName'])[1] ? './..' + JSON.parse(item['imageName'])[1]:'./../assets/images/temp/no-image.jpg');
                 $('#imageDesc-1').summernote({height: 155, focus: true});
+                $('#image-alt-1').val(item['imageAlt']);
             }
         });
         //console.log(JSON.parse(data.gallery_images));
@@ -365,6 +407,7 @@ require './shared/footer.php';
         var nextindex = Number(split_id[2]) + 1;
         $(".gallery-block:last").after(`<div class='row mt-4 gallery-block' id='gallery-block-${nextindex}'></div>`);
         $("#gallery-block-" + nextindex).append(htmlTemplate(nextindex));
+        $('#imageDesc-' + nextindex).summernote({height: 155, focus: true});
         //alert(total_element);
     }
 
@@ -390,7 +433,11 @@ require './shared/footer.php';
                 <div class="col-1 offset-11 mt-2 text-right">
                     <span onclick="deleteBlock(${index})"><i class="text-danger fas fa-times"></i></span>
                 </div>
-                <div class="col-4 mb-2 mt-4">
+                <div class="col-4">
+                    <div class="mb-3"> 
+                        <label for="title">Image alt name</label>
+                        <input type="text" id="image-alt-${index}" name="imageAlt-${index}" class="form-control" placeholder="Enter Image Name">
+                    </div>
                     <label for="title">Image preview</label>
                     <div>
                         <img id="image-pre-${index}" src="./../assets/images/temp/no-image.jpg" width="100%" height="200" alt="">
