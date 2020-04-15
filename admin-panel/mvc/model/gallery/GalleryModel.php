@@ -10,8 +10,8 @@ class GalleryModel extends DatabaseService{
     }
 
     public function addGalleryModel($input) {
-        $query = "INSERT INTO gallery(cat_id, gal_id, title, description, featured_image_lg, featured_image_sm, gallery_images, gal_status, created)
-                    VALUES(:cat_id, :gal_id, :title, :description, :featured_image_lg, :featured_image_sm, :gallery_images, :gal_status, :created)";
+        $query = "INSERT INTO gallery(cat_id, gal_id, title, description, featured_image_lg, featured_image_sm, gallery_images, gal_status, created, image_alt, post_url)
+                    VALUES(:cat_id, :gal_id, :title, :description, :featured_image_lg, :featured_image_sm, :gallery_images, :gal_status, :created, :image_alt, :post_url)";
         try {
             $execute = $this->connection->prepare($query);
             $execute->execute($input);
@@ -30,7 +30,7 @@ class GalleryModel extends DatabaseService{
     }
 
     public function listGalleryModel() {
-        $query = "SELECT gal_id, cat_id, title, description, featured_image_lg, featured_image_sm, gallery_images, gal_status, created, modified, trending_order
+        $query = "SELECT gal_id, cat_id, title, description, featured_image_lg, featured_image_sm, gallery_images, gal_status, created, modified, trending_order, image_alt, post_url
         FROM gallery order by gid desc";
         try {
             $execute = $this->connection->prepare($query);
@@ -53,7 +53,7 @@ class GalleryModel extends DatabaseService{
     }
 
     public function getGalleryModel($input) {
-        $query = 'SELECT gal_id, cat_id, title, description, featured_image_lg, featured_image_sm, gallery_images, gal_status, created, modified
+        $query = 'SELECT gal_id, cat_id, title, description, featured_image_lg, featured_image_sm, gallery_images, gal_status, created, modified, image_alt, post_url
         FROM gallery WHERE gal_id = :gal_id LIMIT 1';
         try {
             $execute = $this->connection->prepare($query);
@@ -76,7 +76,7 @@ class GalleryModel extends DatabaseService{
     }
 
     public function editGalleryModel($input) {
-        $query = "UPDATE gallery SET cat_id = :cat_id, title = :title, description = :description, featured_image_lg = :featured_image_lg, featured_image_sm = :featured_image_sm, gallery_images = :gallery_images, gal_status = :gal_status, modified = :modified
+        $query = "UPDATE gallery SET cat_id = :cat_id, title = :title, description = :description, featured_image_lg = :featured_image_lg, featured_image_sm = :featured_image_sm, gallery_images = :gallery_images, gal_status = :gal_status, modified = :modified, image_alt = :image_alt, post_url = :post_url
         WHERE gal_id = :gal_id" ;
         try {
             $execute = $this->connection->prepare($query);

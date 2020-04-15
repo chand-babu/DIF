@@ -29,4 +29,8 @@ class BlogController {
     public function deleteBlogController($data){
         return $this->blog->deleteBlogModel($data);
     }
+
+    public function checkPostUrlController($data){
+        return $this->blog->checkPostUrlModel($data);
+    }
 }
