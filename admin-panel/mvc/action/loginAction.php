@@ -15,11 +15,11 @@ if (!empty($_POST['email']) && !empty($_POST['password'])) {
         $redirect = "../../dashboard.php";
         $session->createNewSession($constants->USERS_SESSION, $response['data']);
     } else {
-        $redirect = "../../login.php";
+        $redirect = "../../";
         $flashMessage->setFlashMessage($constants->FLASH_MESSAGE_SESSION_NAME, $response['message'], 1);
     }
 }else {
-    $redirect = "../../login.php";
+    $redirect = "../../";
     $flashMessage->setFlashMessage($constants->FLASH_MESSAGE_SESSION_NAME, 'Username and Password Required', 1);
 }
 

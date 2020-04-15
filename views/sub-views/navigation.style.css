@@ -1,31 +1,33 @@
-.navigation, nav {
-    display: flex !important;
-    padding: 10px !important;
-    text-transform: uppercase;
-    box-shadow: 0px 4px 8px #cddce5;
-    background: #e8eff5;
-    z-index: 9999;
+.navigation,
+nav {
+  display: flex !important;
+  padding: 10px !important;
+  text-transform: uppercase;
+  /* box-shadow: 0px 4px 8px #cddce5;
+  background: #e8eff5; */
+  z-index: 9999 !important;
+  box-shadow: rgb(38, 41, 43) 0px 4px 8px;
+  background-image: initial;
+  background-color: rgb(31, 33, 34);
 }
 
-.navigation > .logo {
-    width: 20%;
-    margin: auto;
+.nav-container {
+  display: flex !important;
+  list-style-type: none;
+  justify-content: flex-end !important;
+  align-items: center !important;
+  width: 100%;
+  margin-bottom: 0px !important;
 }
 
-.navigation > ul {
-    display: flex;
-    list-style-type: none;
-    justify-content: flex-end;
-    align-items: center;
-    width: 80%;
-    margin-bottom: 0px !important;
+.nav-container > li > a {
+  color: white !important;
 }
 
-.navigation > ul > li {
-    margin: 0px 15px;
-    cursor: pointer;
+.nav-container > li {
+  cursor: pointer;
 }
 
-.navigation ul li:hover {
-    font-weight: bold;
+.nav-container li:hover {
+  font-weight: bold;
 }

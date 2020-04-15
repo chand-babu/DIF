@@ -13,8 +13,9 @@
     <link rel="stylesheet" href="./assets/library/fontawesome/css/fontawesome.min.css">
     <link rel="stylesheet" href="./assets/library/fontawesome/css/brands.min.css">
     <link rel="stylesheet" href="./assets/library/fontawesome/css/solid.min.css">
+    <!-- <link href="./assets/library/scheletrone/jquery.skeleton.css" rel="stylesheet"> -->
     <link rel="stylesheet" href="./assets/css/main.css">
-
+    <link rel="stylesheet" href="./views/landing/landing.css" />
 </head>
 <body>
 <?php

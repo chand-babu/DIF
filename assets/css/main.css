@@ -1,10 +1,12 @@
 body {
     font-family: 'Roboto', sans-serif;
     letter-spacing: 2px;
-    background: #e8eff5 no-repeat fixed;
+    /* background: #e8eff5 no-repeat fixed; */
     /* background: linear-gradient(to bottom, #e8eff5, #ffffff) no-repeat fixed; */
     background-size: 100% 100%;
-    color: #615f5f;
+    background-color: black;
+    /* color: #615f5f; */
+    color: white;
 }
 
 
@@ -12,9 +14,9 @@ body {
     font-size: 17px;
     outline: none !important;
     border-radius: 5px;
-    background: #e8eff5;
+    /* background: #e8eff5; */
     text-transform: uppercase;
-    color: #615f5f;
+    /* color: #615f5f; */
     letter-spacing: 2px;
     font-family: Roboto, sans-serif;
     width: 150px;
@@ -22,12 +24,23 @@ body {
     transition: all 400ms;
     box-shadow: 7px 7px 15px #bbcfda, -4px -4px 13px #ffffff,
      inset 4px 4px 8px rgba(209, 217, 230, 0.2), inset -8px -8px 8px rgba(255, 255, 255, 0.2);
-
     border: 1px solid rgba(255, 255, 255, 0.3);
+    /* for black background */
+    background-image: initial;
+    background-color: rgb(31, 33, 34);
+    color: rgb(255, 255, 255);
+    box-shadow: rgb(32, 50, 59) 7px 7px 15px, rgb(61, 65, 67) -4px -4px 13px, rgba(37, 40, 41, 0.2) 4px 4px 8px inset, rgba(24, 26, 27, 0.2) -8px -8px 8px inset;
+    border-top-color: rgba(51, 51, 51, 0.3);
+    border-right-color: rgba(51, 51, 51, 0.3);
+    border-bottom-color: rgba(51, 51, 51, 0.3);
+    border-left-color: rgba(51, 51, 51, 0.3);
+    outline-color: initial !important;
+
 }
 
 .n-button span {
-    color: #727272;
+    /* color: #727272; */
+    color: white;
     transition: all 400ms;
     display: flex;
     justify-content: center;
@@ -35,8 +48,8 @@ body {
 }
 
 .n-button:hover {
-    outline: none !important;
+    /* outline: none !important;
     box-shadow: 4px 2px 18px #bbcfda, -4px -4px 13px #ffffff,
     inset 6px 6px 16px rgba(209, 217, 230, 0.8),
-    inset -8px -8px 8px rgba(255, 255, 255, 0.2);
+    inset -8px -8px 8px rgba(255, 255, 255, 0.2); */
 }

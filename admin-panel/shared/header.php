@@ -26,10 +26,20 @@
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!-- Data table -->
+  <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+  <!-- Custom css -->
+  <link rel="stylesheet" href="dist/css/customstyle.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
   <div class="wrapper">
-  <?php
+<?php
   require 'navigation.php';
   require 'sidebar.php';
-  ?>
+  $constants = new \services\ConstantsKey();
+  $session = new \services\SessionService();
+
+  if (!$session->checkSession($constants->USERS_SESSION)) {
+    header("location: ./");
+  }
+?>
