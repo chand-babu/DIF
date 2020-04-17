@@ -23,12 +23,8 @@
                             hendrerit vitae nec eros. Vestibulum neque est, imperdiet nec tortor nec, tempor semper
                             metus. <b>Cras vel tempus velit</b>, et accumsan nisi. Duis laoreet pretium ultricies.
                             Curabitur rhoncus auctor nunc congue sodales. Sed posuere nisi ipsum, eget dignissim
-                            nunc dapibus eget. Aenean elementum <b><a href="javascript:void(0)"
-                                    data-toggle="popover" data-placement="top"
-                                    data-content="You can write any text here">Click me</a></b> sollicitudin sapien
-                            ut sapien fermentum aliquet mollis. Curabitur ac quam orci sodales quam ut tempor. <b
-                                data-toggle="tooltip" data-placement="top"
-                                title="You can write any text here.">Hover me</b> suspendisse, gravida in augue in,
+                            nunc dapibus eget. Aenean elementum <b><a href="javascript:void(0)" data-toggle="popover" data-placement="top" data-content="You can write any text here">Click me</a></b> sollicitudin sapien
+                            ut sapien fermentum aliquet mollis. Curabitur ac quam orci sodales quam ut tempor. <b data-toggle="tooltip" data-placement="top" title="You can write any text here.">Hover me</b> suspendisse, gravida in augue in,
                             interdum bibendum dui. Suspendisse sit amet justo sit amet diam fringilla commodo.
                             Praesent ac magna at metus malesuada tincidunt non ac arcu. Nunc gravida eu felis vel
                             elementum. Vestibulum sodales quam ut tempor tempor. Donec sollicitudin sapien ut sapien
@@ -53,8 +49,7 @@
                         <!-- Post Video Tutorial Start -->
                         <div class="video-box margin-top-40 margin-bottom-40">
                             <div class="video-tutorial">
-                                <a class="video-popup" href="https://www.youtube.com/watch?v=O2Bsw3lrhvs"
-                                    title="Video Tutorial">
+                                <a class="video-popup" href="https://www.youtube.com/watch?v=O2Bsw3lrhvs" title="Video Tutorial">
                                     <img src="images/blog/4.jpg" alt="">
                                 </a>
                             </div>
@@ -200,45 +195,67 @@
                             </div>
 
                             <div class="c-padding">
-                                <h3>Article By <a href="#" target="_blank" data-toggle="tooltip"
-                                        data-placement="top" title="Visit Alex Website">Alex Parker</a></h3>
+                                <h3>Article By <a href="#" target="_blank" data-toggle="tooltip" data-placement="top" title="Visit Alex Website">Alex Parker</a></h3>
                                 <p>You can use about author box when someone guest post on your blog, Lorem ipsum
                                     consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
                                     dolore magna ad minim veniam.</p>
                             </div>
                         </div>
-                        <!-- Post Author Bio Box End -->
 
+                        <!-- Comments Form -->
+                        <div class="card my-4">
+                            <h5 class="card-header">Leave a Comment:</h5>
+                            <div class="card-body">
+                                <form>
+                                    <div class="form-group">
+                                        <label>Name</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Comment</label>
+                                        <textarea class="form-control" rows="3"></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
+                            </div>
+                        </div>
 
+                        <!-- Single Comment -->
+                        <div class="media mb-4">
+                            <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+                            <div class="media-body">
+                                <h5 class="mt-0">Commenter Name</h5>
+                                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                            </div>
+                        </div>
 
+                        <!-- Comment with nested comments -->
+                        <div class="media mb-4">
+                            <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+                            <div class="media-body">
+                                <h5 class="mt-0">Commenter Name</h5>
+                                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
 
-                        <!-- You May Also Like Start -->
-                        <!-- <div class="you-may-also-like margin-top-50 margin-bottom-50">
-                            <h3>You may also like</h3>
-                            <div class="row">
-
-                                <div class="col-md-4 col-sm-6 col-xs-12">
-                                    <a href="single.html">
-                                        <p>Make mailchimp singup form working with ajax using jquery plugin</p>
-                                    </a>
+                                <div class="media mt-4">
+                                    <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+                                    <div class="media-body">
+                                        <h5 class="mt-0">Commenter Name</h5>
+                                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                                    </div>
                                 </div>
 
-                                <div class="col-md-4 col-sm-6 col-xs-12">
-                                    <a href="single.html">
-                                        <p>How to design elegant e-mail newsletter in html for wish christmas to
-                                            your subscribers?</p>
-                                    </a>
-                                </div>
-
-                                <div class="col-md-4 col-sm-6 col-xs-12">
-                                    <a href="single.html">
-                                        <p>How to customize a wordpress theme entirely from scratch using a child
-                                            theme?</p>
-                                    </a>
+                                <div class="media mt-4">
+                                    <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+                                    <div class="media-body">
+                                        <h5 class="mt-0">Commenter Name</h5>
+                                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                                    </div>
                                 </div>
 
                             </div>
-                        </div> -->
+                        </div>
+
+
                     </div>
                 </div>
             </div>
@@ -252,11 +269,9 @@
                     <form role="Form" method="GET" action="" accept-charset="UTF-8">
                         <div class="form-group">
                             <div class="input-group">
-                                <input class="form-control" type="text" name="search" placeholder="Search..."
-                                    required />
+                                <input class="form-control" type="text" name="search" placeholder="Search..." required />
                                 <span class="input-group-btn">
-                                    <button class="btn btn-default" type="submit"><span
-                                            class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                                    <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                                 </span>
                             </div>
                         </div>
@@ -265,8 +280,7 @@
                     <h4 class="text-center">Popular Posts!</h4>
                     <div class="row">
                         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                            <img src="https://images.pexels.com/photos/301930/pexels-photo-301930.jpeg?h=350&auto=compress&cs=tinysrgb"
-                                alt="" class="img-thumbnail img-responsive">
+                            <img src="https://images.pexels.com/photos/301930/pexels-photo-301930.jpeg?h=350&auto=compress&cs=tinysrgb" alt="" class="img-thumbnail img-responsive">
                         </div>
                         <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
                             <h5>Images by pexels.com</h5>
@@ -277,8 +291,7 @@
                     <hr>
                     <div class="row">
                         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                            <img src="https://images.pexels.com/photos/34601/pexels-photo.jpg?h=350&auto=compress&cs=tinysrgb"
-                                alt="" class="img-thumbnail img-responsive">
+                            <img src="https://images.pexels.com/photos/34601/pexels-photo.jpg?h=350&auto=compress&cs=tinysrgb" alt="" class="img-thumbnail img-responsive">
                         </div>
                         <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
                             <h5>Images by pexels.com</h5>
@@ -289,8 +302,7 @@
                     <hr>
                     <div class="row">
                         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                            <img src="https://images.pexels.com/photos/459688/pexels-photo-459688.jpeg?h=350&auto=compress&cs=tinysrgb"
-                                alt="" class="img-thumbnail img-responsive">
+                            <img src="https://images.pexels.com/photos/459688/pexels-photo-459688.jpeg?h=350&auto=compress&cs=tinysrgb" alt="" class="img-thumbnail img-responsive">
                         </div>
                         <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
                             <h5>Images by pexels.com</h5>
@@ -301,8 +313,7 @@
                     <hr>
                     <div class="row">
                         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                            <img src="https://images.pexels.com/photos/273222/pexels-photo-273222.jpeg?h=350&auto=compress&cs=tinysrgb"
-                                alt="" class="img-thumbnail img-responsive">
+                            <img src="https://images.pexels.com/photos/273222/pexels-photo-273222.jpeg?h=350&auto=compress&cs=tinysrgb" alt="" class="img-thumbnail img-responsive">
                         </div>
                         <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
                             <h5>Images by pexels.com</h5>
@@ -313,8 +324,7 @@
                     <hr>
                     <div class="row">
                         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                            <img src="https://images.pexels.com/photos/392018/pexels-photo-392018.jpeg?h=350&auto=compress&cs=tinysrgb"
-                                alt="" class="img-thumbnail img-responsive">
+                            <img src="https://images.pexels.com/photos/392018/pexels-photo-392018.jpeg?h=350&auto=compress&cs=tinysrgb" alt="" class="img-thumbnail img-responsive">
                         </div>
                         <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
                             <h5>Images by pexels.com</h5>

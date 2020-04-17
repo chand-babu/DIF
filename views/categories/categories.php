@@ -5,34 +5,35 @@ $response = $category->listCategoryController();
 $categoryListing = $response['result'] ? $response['data'] : array();
 ?>
 <link rel="stylesheet" href="./views/categories/categories.style.css" />
+<link rel="stylesheet" href="./views/categories-images/categories-images.css" />
 <div class="container-fluid">
     <div class="row">
-        <div class="col-12">
+        <div class="col-md-12 my-5 text-center">
+            <h1 class="text-center">Top Categories</h1>
+        </div>
+        <div class="col-md-9">
             <section class="cards-wrapper row">
-                <div class="col-12 my-5 text-center">
-                    <h1 class="text-center">Top Categories</h1>
-                </div>
                 <?php
                 $index = 0;
-                    foreach ($categoryListing as $key => $value) {
-                        $date = date('d/M/Y',strtotime(json_decode($value['created'], true)['created_on']));
-                        echo '<div class="card-grid-space col-md-2 col-lg-4 col-12 col-xl-4">
-                        <div class="num">'.($index +1).'</div>
-                        <a class="card" href="./galleries"
-                            style="--bg-img: url(../../'. $value['image_sm'] .'">
+                foreach ($categoryListing as $key => $value) {
+                    $date = date('d/M/Y', strtotime(json_decode($value['created'], true)['created_on']));
+                    echo '<div class="card-grid-space col-md-4 mb-4">
+                        <a class="card d-flex align-items-center justify-content-center" href="./galleries"
+                            style="--bg-img: url(../../' . $value['image_sm'] . '">
                             <div>
-                                <h1>'.$value['name'].'</h1>
-                                <p>The syntax of a language is how it works. How to actually write it. Learn HTML syntax…</p>
-                                <div class="date">'.$date.'</div>
+                                <h1>' . $value['name'] . '</h1>
+                                <div class="date">' . $date . '</div>
                                 <div class="tags">
-                                    <div class="tag">'.$value['name'].'</div>
+                                    <div class="tag">' . $value['name'] . '</div>
                                 </div>
                             </div>
                         </a>
                     </div>';
                 ?>
-                <?php $index++; } ?>
-            
+                <?php $index++;
+                } ?>
+
+                <!-- <div class="num">' . ($index + 1) . '</div> -->
                 <!-- <div class="card-grid-space col-md-2 col-lg-4 col-12">
                     <div class="num">06</div>
                     <a class="card" href="https://codetheweb.blog/2017/10/14/links-images-about-file-paths/"
@@ -47,13 +48,70 @@ $categoryListing = $response['result'] ? $response['data'] : array();
                         </div>
                     </a>
                 </div> -->
-            
+
             </section>
         </div>
 
-        <div class="col-md-3 col-12 border-left p-5">
-            Side nav will come here
-        </div>
+        <div class="col-md-3 sidebar">
+					<div class="widget widget-search">
+						<form action="#" method="get" accept-charset="utf-8">
+							<input type="text" name="widget-search" placeholder="Search">
+						</form>
+					</div>
+					<div class="widget widget-categories">
+						<div class="widget-title">
+							<h3>Categories</h3>
+						</div>
+						<ul class="cat-list">
+							<li>
+								<a href="#"><i class="fas fa-chevron-right"></i> Accessories<span>(03)</span></a>
+							</li>
+							<li>
+								<a href="#"><i class="fas fa-chevron-right"></i> Cameras<span>(19)</span></a>
+							</li>
+							<li>
+								<a href="#"><i class="fas fa-chevron-right"></i> Computers<span>(56)</span></a>
+							</li>
+							<li>
+								<a href="#"><i class="fas fa-chevron-right"></i> Laptops<span>(03)</span></a>
+							</li>
+							<li>
+								<a href="#"><i class="fas fa-chevron-right"></i> Networking<span>(03)</span></a>
+							</li>
+							<li>
+								<a href="#"><i class="fas fa-chevron-right"></i> Old Products<span>(89)</span></a>
+							</li>
+							<li>
+								<a href="#"><i class="fas fa-chevron-right"></i> Smartphones<span>(90)</span></a>
+							</li>
+							<li>
+								<a href="#"><i class="fas fa-chevron-right"></i> Software<span>(23)</span></a>
+							</li>
+						</ul>
+					</div>
+					<div class="widget widget-tags">
+						<div class="widget-title">
+							<h3>Popular Tags</h3>
+						</div>
+						<ul class="tag-list">
+							<li>
+								<a href="#" class="waves-effect waves-teal">Phone</a>
+							</li>
+							<li>
+								<a href="#" class="waves-effect waves-teal">Cameras</a>
+							</li>
+							<li>
+								<a href="#" class="waves-effect waves-teal">Computers</a>
+							</li>
+							<li>
+								<a href="#" class="waves-effect waves-teal">Laptops</a>
+							</li>
+							<li>
+								<a href="#" class="waves-effect waves-teal">Headphones</a>
+							</li>
+						</ul>
+					</div>
+				</div>
 
     </div>
 </div>

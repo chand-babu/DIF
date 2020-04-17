@@ -75,7 +75,9 @@ $galleryLisiting = $responseGallery['result'] ? $responseGallery['data'] : array
                         <div class="col-4 mb-3">
                             <div class="position-relative w-100">
                                 <div>
-                                    <img class="w-100" src=".'.$value['featured_image_sm'].'" height="216px" />
+                                    <a href="./galleries-images">
+                                        <img class="w-100" src=".'.$value['featured_image_sm'].'" height="216px" />
+                                    </a>
                                 </div>
                                 <div class="position-absolute photo-name">
                                     <div>'.$value['title'].'</div>
@@ -94,7 +96,7 @@ $galleryLisiting = $responseGallery['result'] ? $responseGallery['data'] : array
                     <h4 class="text-center mb-0">Recents Blogs</h4>
                 </div>
                 <div class="col-12 mb-3">
-                    <div class="border shadow w-100">
+                    <div class="shadow w-100">
                         <img class="w-100" src="http://unsplash.it/600/400?image=940" alt="blog image" />
                         <div class="text-center py-3 bg-white text-dark">
                             Blog Title what is blog??? blog blog blog
@@ -102,7 +104,7 @@ $galleryLisiting = $responseGallery['result'] ? $responseGallery['data'] : array
                     </div>
                 </div>
                 <div class="col-12 mb-3">
-                    <div class="border shadow w-100">
+                    <div class="shadow w-100">
                         <img class="w-100" src="http://unsplash.it/640/450?image=906" alt="blog image" />
                         <div class="text-center py-3 bg-white text-dark">
                             Blog Title
@@ -110,7 +112,7 @@ $galleryLisiting = $responseGallery['result'] ? $responseGallery['data'] : array
                     </div>
                 </div>
                 <div class="col-12 mb-3">
-                    <div class="border shadow w-100">
+                    <div class="shadow w-100">
                         <img class="w-100" src="http://unsplash.it/600/400?image=940" alt="blog image" />
                         <div class="text-center py-3 bg-white text-dark">
                             Blog Title

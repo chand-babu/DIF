@@ -13,7 +13,7 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <div class="panel panel-default">
-                        <div class="panel-body border p-3 mb-4">
+                        <div class="panel-body blog-border p-3 mb-4">
                             <img src="https://images.pexels.com/photos/262508/pexels-photo-262508.jpeg?h=350&auto=compress&cs=tinysrgb"
                                 alt="" class="img-thumbnail img-responsive">
                             <p class="text-muted">By <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
@@ -29,7 +29,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <div class="panel panel-default">
-                        <div class="panel-body border p-3 mb-4">
+                        <div class="panel-body blog-border p-3 mb-4">
                             <img src="https://images.pexels.com/photos/34601/pexels-photo.jpg?h=350&auto=compress&cs=tinysrgb"
                                 alt="" class="img-thumbnail img-responsive">
                             <p class="text-muted">By <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
@@ -45,7 +45,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <div class="panel panel-default">
-                        <article class="panel-body border p-3 mb-4">
+                        <article class="panel-body blog-border p-3 mb-4">
                             <img src="https://images.pexels.com/photos/459688/pexels-photo-459688.jpeg?h=350&auto=compress&cs=tinysrgb"
                                 alt="" class="img-thumbnail img-responsive">
                             <p class="text-muted">By <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
@@ -61,7 +61,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <div class="panel panel-default">
-                        <article class="panel-body border p-3 mb-4">
+                        <article class="panel-body blog-border p-3 mb-4">
                             <img src="https://images.pexels.com/photos/273222/pexels-photo-273222.jpeg?h=350&auto=compress&cs=tinysrgb"
                                 alt="" class="img-thumbnail img-responsive">
                             <p class="text-muted">By <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
@@ -77,7 +77,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <div class="panel panel-default">
-                        <article class="panel-body border p-3 mb-4">
+                        <article class="panel-body blog-border p-3 mb-4">
                             <img src="https://images.pexels.com/photos/392018/pexels-photo-392018.jpeg?h=350&auto=compress&cs=tinysrgb"
                                 alt="" class="img-thumbnail img-responsive">
                             <p class="text-muted">By <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
@@ -93,7 +93,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <div class="panel panel-default">
-                        <article class="panel-body border p-3 mb-4">
+                        <article class="panel-body blog-border p-3 mb-4">
                             <img src="https://images.pexels.com/photos/301930/pexels-photo-301930.jpeg?h=350&auto=compress&cs=tinysrgb"
                                 alt="" class="img-thumbnail img-responsive">
                             <p class="text-muted">By <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
