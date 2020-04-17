@@ -1,6 +1,4 @@
-<link rel="stylesheet" href="./views/sub-views/footer-bar.css" />
- 
- <!-- footer_start -->
+  <!-- footer_start -->
  <footer class="footer mt-5 border-top">
      <div class="footer_area">
          <div class="container">
@@ -36,12 +34,12 @@
                      <div class="col-xl-12">
                          <div class="footer_links text-center">
                              <ul>
-                                 <li><a href="./">Home</a></li>
-                                 <li><a href="./categories">Category</a></li>
-                                 <li><a href="./galleries">Gallery</a></li>
-                                 <li><a href="./about">About</a></li>
-                                 <li><a href="./privacy">Privacy</a></li>
-                                 <li><a href="./contact">Contact</a></li>
+                                 <li><a href="<?php echo URL_BASE;?>">Home</a></li>
+                                 <li><a href="<?php echo URL_BASE .'categories';?>">Category</a></li>
+                                 <li><a href="<?php echo URL_BASE .'galleries';?>">Gallery</a></li>
+                                 <li><a href="<?php echo URL_BASE .'about';?>">About</a></li>
+                                 <li><a href="<?php echo URL_BASE .'privacy';?>">Privacy</a></li>
+                                 <li><a href="<?php echo URL_BASE .'contact';?>">Contact</a></li>
                              </ul>
                          </div>
                      </div>

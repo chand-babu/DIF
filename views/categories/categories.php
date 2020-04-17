@@ -4,7 +4,6 @@ $category = new \controller\category\CategoryController();
 $response = $category->listCategoryController();
 $categoryListing = $response['result'] ? $response['data'] : array();
 ?>
-<link rel="stylesheet" href="./views/categories/categories.style.css" />
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">

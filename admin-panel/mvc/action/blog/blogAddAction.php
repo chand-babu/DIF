@@ -19,9 +19,9 @@ if (!isset($_POST['blog_img'])) {
     $data = array(
         'blg_id' => $commonService->getUniqueIdentityCode('BLG', false),
         'cat_id' => $_POST['category'], 
-        'title' => $_POST['title'],
+        'title' => trim($_POST['title'],""),
         'image_alt' => $_POST['image_alt'],
-        'post_url' => $_POST['post_url'],
+        'post_url' => trim($_POST['post_url']),
         'description' => $_POST['description'],
         'content' => $_POST['content_description'],
         'image_lg' => $image_name[0],

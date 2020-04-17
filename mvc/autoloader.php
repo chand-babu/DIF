@@ -3,7 +3,7 @@ session_start();
 date_default_timezone_set("Asia/Calcutta");
 $host = $_SERVER['HTTP_HOST'];
 if ($host == 'localhost') {
-    define("BASE_PATH", "http://localhost/projects/dailyimagefunda/");
+    define("BASE_PATH", "http://localhost/projects/DIF/");
     define("DATABASE", "dailyimagefunda");
     define("USER", "root");
     define("PASSWORD", "");

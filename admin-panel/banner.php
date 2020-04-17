@@ -191,6 +191,12 @@ require './shared/footer.php';
             });
         }); 
     });
+    
+    function modelMessageCall(title, data){
+        $("#myModal").modal();
+        $("#myModal .modal-title").html(title);
+        $("#myModal .modal-body").html(data);
+    }
 
     function addBanner() {
         location.href = './bannerAdd.php';

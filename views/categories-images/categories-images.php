@@ -8,7 +8,6 @@ $responseGallery = $gallery->getGalleryController('GAL30056923099030c3d062d99657
 $galleryLisiting = $responseGallery['result'] ? $responseGallery['data'] : array();
 $gallery_img = json_decode($galleryLisiting['gallery_images'], true);
 ?>
-<link rel="stylesheet" href="./views/categories-images/categories-images.css" />
 
 <div class="container-fluid">
     <div class="row my-4">
