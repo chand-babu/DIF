@@ -1,0 +1,32 @@
+.header_links ul li {
+    display: inline-block;
+  }
+  
+  /* line 14, ../../Arafath/CL/CL August/204. Blog/204. Blog- HTML/scss/_footer.scss */
+  .header_links ul li a {
+    width: 53px;
+    height: 53px;
+    border-radius: 50%;
+    line-height: 53px;
+    font-size: 18px;
+    color: #fff;
+    background: #3B5998;
+    display: inline-block;
+    margin: 0 7px;
+  }
+  
+  /* line 25, ../../Arafath/CL/CL August/204. Blog/204. Blog- HTML/scss/_footer.scss */
+  .header_links ul li a.twiter {
+    background: #517FA4;
+  }
+  
+  /* line 28, ../../Arafath/CL/CL August/204. Blog/204. Blog- HTML/scss/_footer.scss */
+  .header_links ul li a.insta {
+    background: #55ACEE;
+  }
+  
+  /* line 31, ../../Arafath/CL/CL August/204. Blog/204. Blog- HTML/scss/_footer.scss */
+  .header_links ul li a:hover {
+    background: #fff;
+    color: #1f1f1f;
+  }

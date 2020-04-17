@@ -45,6 +45,18 @@ $router->get('/blog', function() {
     echo requireView('blogs-list/blogs-list.php');
 });
 
+$router->get('/single-blog', function() {
+    echo requireView('categories-blog/categories-blog.php');
+});
+
+$router->get('/search-results', function() {
+    echo requireView('search-results/search-results.php');
+});
+
+$router->get('/image-share-download', function() {
+    echo requireView('image-share-download/image-share-download.php');
+});
+
 $router->run();
 
 includeView('sub-views/footer-bar.php');

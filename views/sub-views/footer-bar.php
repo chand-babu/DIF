@@ -10,7 +10,7 @@
                                  <img src="img/footer-logo.png" alt="">
                              </a>
                          </div>
-                         <p class="footer_text">
+                         <p class="footer_text text-center">
                              Explore photo media blog to enrich your photography knowledge
                          </p>
                          <div class="header_links">
@@ -47,7 +47,7 @@
              </div>
          </div>
          <div class="copyright_text text-center">
-             <p>
+             <p class="text-center">
                  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                  Copyright &copy;<script>
                      document.write(new Date().getFullYear());

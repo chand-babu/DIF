@@ -44,7 +44,7 @@ $blogLisiting = $responseBlog['result'] ? $responseBlog['data'] : array();
                                     <span class="caption">'.$value['description'].'</span>
                                 </div>
                                 <!-- on hover -->
-                                <div class="position-absolute w-100 h-100 view-more">
+                                <div class="w-100 h-100 view-more">
                                     <div>
                                         <button class="text-white n-button mr-3">View More <i class="fas fa-angle-double-right"></i></button>
                                     </div>
@@ -129,7 +129,7 @@ $blogLisiting = $responseBlog['result'] ? $responseBlog['data'] : array();
                                             <div>
                                                 <img src=".'.$value['image_sm'].'" alt="Banner One" />
                                             </div>
-                                            <div class="position-absolute w-100 h-100 image-name">
+                                            <div class="w-100 h-100 image-name">
                                                 <div>'.$value['name'].'</div>
                                             </div>
                                         </div>
@@ -152,7 +152,7 @@ $blogLisiting = $responseBlog['result'] ? $responseBlog['data'] : array();
                                         <div>
                                             <img src=".'.$value['featured_image_sm'].'" alt="Banner One" />
                                         </div>
-                                        <div class="position-absolute w-100 h-100 image-name">
+                                        <div class="w-100 h-100 image-name">
                                             <div>'.$value['title'].'</div>
                                         </div>
                                     </div>
@@ -171,7 +171,7 @@ $blogLisiting = $responseBlog['result'] ? $responseBlog['data'] : array();
                                     <div>
                                         <img src="./assets/images/temp/banner1.jpg" alt="Banner One" />
                                     </div>
-                                    <div class="position-absolute w-100 h-100 image-name">
+                                    <div class="w-100 h-100 image-name">
                                         <div>
                                             <a href="./assets/images/temp/banner1.jpg" download
                                             style="text-decoration: none;outline:none;">
@@ -187,7 +187,7 @@ $blogLisiting = $responseBlog['result'] ? $responseBlog['data'] : array();
                                     <div>
                                         <img src="./assets/images/temp/banner1.jpg" alt="Banner One" />
                                     </div>
-                                    <div class="position-absolute w-100 h-100 image-name">
+                                    <div class="w-100 h-100 image-name">
                                         <div>
                                             <i class="fas fa-download mr-3"></i>
                                             <i class="fas fa-share-alt"></i>
@@ -200,7 +200,7 @@ $blogLisiting = $responseBlog['result'] ? $responseBlog['data'] : array();
                                     <div>
                                         <img src="./assets/images/temp/banner1.jpg" alt="Banner One" />
                                     </div>
-                                    <div class="position-absolute w-100 h-100 image-name">
+                                    <div class="w-100 h-100 image-name">
                                         <div>
                                             <i class="fas fa-download mr-3"></i>
                                             <i class="fas fa-share-alt"></i>
@@ -213,7 +213,7 @@ $blogLisiting = $responseBlog['result'] ? $responseBlog['data'] : array();
                                     <div>
                                         <img src="./assets/images/temp/banner1.jpg" alt="Banner One" />
                                     </div>
-                                    <div class="position-absolute w-100 h-100 image-name">
+                                    <div class="w-100 h-100 image-name">
                                         <div>
                                             <i class="fas fa-download mr-3"></i>
                                             <i class="fas fa-share-alt"></i>
@@ -226,7 +226,7 @@ $blogLisiting = $responseBlog['result'] ? $responseBlog['data'] : array();
                                     <div>
                                         <img src="./assets/images/temp/banner1.jpg" alt="Banner One" />
                                     </div>
-                                    <div class="position-absolute w-100 h-100 image-name">
+                                    <div class="w-100 h-100 image-name">
                                         <div>
                                             <i class="fas fa-download mr-3"></i>
                                             <i class="fas fa-share-alt"></i>
@@ -248,7 +248,7 @@ $blogLisiting = $responseBlog['result'] ? $responseBlog['data'] : array();
                                     <div>
                                         <img class="w-100 h-100" src="./assets/images/temp/banner1.jpg" alt="Banner One" height="300px" />
                                     </div>
-                                    <div class="position-absolute w-100 h-100 image-name">
+                                    <div class="w-100 h-100 image-name">
                                         <div>Name of the Blog</div>
                                     </div>
                                 </div>
@@ -258,7 +258,7 @@ $blogLisiting = $responseBlog['result'] ? $responseBlog['data'] : array();
                                     <div>
                                         <img class="w-100 h-100" src="./assets/images/temp/banner1.jpg" alt="Banner One" />
                                     </div>
-                                    <div class="position-absolute w-100 h-100 image-name">
+                                    <div class="w-100 h-100 image-name">
                                         <div>Name of the Blog</div>
                                     </div>
                                 </div>
@@ -268,7 +268,7 @@ $blogLisiting = $responseBlog['result'] ? $responseBlog['data'] : array();
                                     <div>
                                         <img class="w-100 h-100" src="./assets/images/temp/banner1.jpg" alt="Banner One" />
                                     </div>
-                                    <div class="position-absolute w-100 h-100 image-name">
+                                    <div class="w-100 h-100 image-name">
                                         <div>Name of the Blog</div>
                                     </div>
                                 </div>
@@ -321,12 +321,12 @@ $blogLisiting = $responseBlog['result'] ? $responseBlog['data'] : array();
             </div>
         </div>
         <div class="col-md-3 d-none d-md-block">
-            <div class="side-nav-container sticky-top" style="top: 100px">
+            <div class="side-nav-container sticky-top overflow-auto" style="top: 100px;max-height: 350px;">
                 <div class="title"> Categories </div>
                 <ul class="side-nav-landing sticky-top">
                     <?php
                         foreach ($categoryListing as $key => $value) {
-                            echo '<li><a class="text-white" href="./categories" style="text-decoration:none;"><span>'.$value['name'].'</span> <i class="fas fa-angle-double-right"></i></a></li>';
+                            echo '<li><a class="text-white" href="./categories" style="text-decoration:none;"><span>'.$value['name'].'</span> <i class="fas fa-angle-double-right float-right"></i></a></li>';
                         }
                     ?>
                 </ul>

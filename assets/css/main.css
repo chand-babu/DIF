@@ -53,3 +53,7 @@ body {
     inset 6px 6px 16px rgba(209, 217, 230, 0.8),
     inset -8px -8px 8px rgba(255, 255, 255, 0.2); */
 }
+
+.blog-border {
+    border: 1px solid #f1f1f1 !important;
+}
