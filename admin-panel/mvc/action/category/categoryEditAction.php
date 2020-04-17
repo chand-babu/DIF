@@ -13,7 +13,7 @@ $image_name = !empty($_FILES['image']['name']) ? $commonService->uploadFilesToDi
 //print_r($image_name);die();
 $data = array(
         'cat_id' => $_POST['catId'],
-        'name' => $_POST['name'],
+        'name' => trim($_POST['name'],""),
         'image_lg' => $image_name[0],
         'image_sm' => $image_name[1],
         'cat_status' => $_POST['status'],

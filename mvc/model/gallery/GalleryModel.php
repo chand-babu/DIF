@@ -10,8 +10,8 @@ class GalleryModel extends DatabaseService{
     }
 
     public function listGalleryModel() {
-        $query = "SELECT gal_id, cat_id, title, description, featured_image_lg, featured_image_sm, gallery_images, gal_status, created, modified
-        FROM gallery ORDER BY gid DESC";
+        $query = "SELECT c.name, g.gal_id, g.cat_id, g.title, g.description, g.featured_image_lg, g.featured_image_sm, g.gallery_images, g.gal_status, g.created, g.modified
+        FROM gallery g INNER JOIN category c ON g.cat_id = c.cat_id ORDER BY gid DESC";
         try {
             $execute = $this->connection->prepare($query);
             $execute->execute();

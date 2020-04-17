@@ -3,16 +3,18 @@ require 'mvc/autoloader.php';
 $category = new \controller\category\CategoryController();
 $banner = new \controller\banner\BannerController();
 $gallery = new \controller\gallery\GalleryController();
+$blog = new \controller\blog\BlogController();
 
 
 $response = $category->listCategoryController();
 $responseBanner = $banner->listBannerController();
 $responseGallery = $gallery->listGalleryController();
+$responseBlog = $blog->letestBlogController();
 
 $categoryListing = $response['result'] ? $response['data'] : array();
 $bannerListing = $responseBanner['result'] ? $responseBanner['data'] : array();
 $galleryLisiting = $responseGallery['result'] ? $responseGallery['data'] : array();
-
+$blogLisiting = $responseBlog['result'] ? $responseBlog['data'] : array();
 ?>
 
 <div class="container-fluid">
@@ -171,7 +173,10 @@ $galleryLisiting = $responseGallery['result'] ? $responseGallery['data'] : array
                                     </div>
                                     <div class="position-absolute w-100 h-100 image-name">
                                         <div>
-                                            <i class="fas fa-download mr-3"></i>
+                                            <a href="./assets/images/temp/banner1.jpg" download
+                                            style="text-decoration: none;outline:none;">
+                                                <i class="fas fa-download mr-3"></i>
+                                            </a>
                                             <i class="fas fa-share-alt"></i>
                                         </div>
                                     </div>
@@ -279,85 +284,38 @@ $galleryLisiting = $responseGallery['result'] ? $responseGallery['data'] : array
                     <div class="col-12 my-4">
                         <h1 class="text-center">Latest Blogs</h1>
                     </div>
-                    <div class="col-sm-6 col-md-4">
-                        <div class="blog-box">
-                            <div class="blog-box-image">
-                                <img class="w-100" src="https://images.pexels.com/photos/6384/woman-hand-desk-office.jpg?w=940&h=650&auto=compress&cs=tinysrgb" class="img-responsive" alt="">
-                            </div>
-                            <div class="blog-box-content">
-                                <h4 class="mt-2"><a href="#">quis porta tellus dictum</a></h4>
-                                <p>Phasellus lorem enim, luctus ut velit eget, convallis egestas eros.
-                                    Sed ornare ligula eget tortor tempor, quis porta tellus dictum.</p>
-                                <div class="row mb-2 border-bottom pb-2">
-                                    <div class="col-6 text-left">
-                                        <i class="fab fa-facebook-f"></i>
-                                        <i class="fab fa-twitter"></i>
-                                        <i class="fab fa-instagram"></i>
+                    <?php
+                        foreach ($blogLisiting as $key => $value) {
+                            $postDate = json_decode($value['created'], true);
+                            //print_r($postDate);
+                            echo '
+                            <div class="col-sm-6 col-md-4">
+                                <div class="blog-box">
+                                    <div class="blog-box-image">
+                                        <img class="w-100" src=".'.$value['image_sm'].'" class="img-responsive" alt="'.$value['image_alt'].'">
                                     </div>
-                                    <div class="col-6" style="font-size: 12px">
-                                        <div class="text-right">
-                                            <i class="fas fa-calendar-week"></i>
-                                            <span>24/03/2020</span>
+                                    <div class="blog-box-content">
+                                        <h4 class="mt-2"><a href="#">'.$value['title'].'</a></h4>
+                                        <p>'.$value['description'].'</p>
+                                        <div class="row mb-2 border-bottom pb-2">
+                                            <div class="col-6 text-left">
+                                                <i class="fab fa-facebook-f"></i>
+                                                <i class="fab fa-twitter"></i>
+                                                <i class="fab fa-instagram"></i>
+                                            </div>
+                                            <div class="col-6" style="font-size: 12px">
+                                                <div class="text-right">
+                                                    <i class="fas fa-calendar-week"></i>
+                                                    <span>'.date("d/m/Y", strtotime($postDate['created_on'])).'</span>
+                                                </div>
+                                            </div>
                                         </div>
+                                        <a href="./blog" class="btn btn-default site-btn text-white">Read More</a>
                                     </div>
                                 </div>
-                                <a href="./blog" class="btn btn-default site-btn text-white">Read More</a>
-                            </div>
-                        </div>
-                    </div> <!-- End Col -->
-                    <div class="col-sm-6 col-md-4">
-                        <div class="blog-box">
-                            <div class="blog-box-image">
-                                <img class="w-100" src="https://images.pexels.com/photos/374897/pexels-photo-374897.jpeg?w=940&h=650&auto=compress&cs=tinysrgb" class="img-responsive" alt="">
-                            </div>
-                            <div class="blog-box-content">
-                                <h4 class="mt-2"><a href="#">quis porta tellus dictum</a></h4>
-                                <p>Phasellus lorem enim, luctus ut velit eget, convallis egestas eros.
-                                    Sed ornare ligula eget tortor tempor, quis porta tellus dictum.</p>
-
-                                <div class="row mb-2 border-bottom pb-2">
-                                    <div class="col-6 text-left">
-                                        <i class="fab fa-facebook-f"></i>
-                                        <i class="fab fa-twitter"></i>
-                                        <i class="fab fa-instagram"></i>
-                                    </div>
-                                    <div class="col-6" style="font-size: 12px">
-                                        <div class="text-right">
-                                            <i class="fas fa-calendar-week"></i>
-                                            <span>24/03/2020</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="./blog" class="btn btn-default site-btn text-white">Read More</a>
-                            </div>
-                        </div>
-                    </div> <!-- End Col -->
-                    <div class="col-sm-6 col-md-4">
-                        <div class="blog-box">
-                            <div class="blog-box-image">
-                                <img class="w-100" src="https://images.pexels.com/photos/541522/pexels-photo-541522.jpeg?w=940&h=650&auto=compress&cs=tinysrgb" class="img-responsive" alt="">
-                            </div>
-                            <div class="blog-box-content">
-                                <h4 class="mt-2"><a href="#">quis porta tellus dictum</a></h4>
-                                <p>Phasellus lorem enim, luctus ut velit eget, convallis egestas eros.
-                                    Sed ornare ligula eget tortor tempor, quis porta tellus dictum.</p>
-                                <div class="row mb-2 border-bottom pb-2">
-                                    <div class="col-6 text-left">
-                                        <i class="fab fa-facebook-f"></i>
-                                        <i class="fab fa-twitter"></i>
-                                        <i class="fab fa-instagram"></i>
-                                    </div>
-                                    <div class="col-6" style="font-size: 12px">
-                                        <div class="text-right">
-                                            <i class="fas fa-calendar-week"></i>
-                                            <span>24/03/2020</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="./blog" class="btn btn-default site-btn text-white">Read More</a>
-                            </div>
-                        </div>
-                    </div> <!-- End Col -->
+                            </div> ';
+                        }
+                    ?>
                 </div>
 
             </div>
@@ -375,4 +333,47 @@ $galleryLisiting = $responseGallery['result'] ? $responseGallery['data'] : array
             </div>
         </div>
     </div>
+</div>
+
+<div class="modal fade mt-5" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" 
+aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade mt-5" id="formModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" 
+aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Subscribe</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <input type="hidden" id="blg-model-id" value="">
+      <div class="modal-body">
+            <label for="">Email ID</label>
+            <input id="sub-email" type="email" name="email" class="form-control"
+            placeholder="example@example.com">
+            <div id="sub-err" class="text-danger" style="display:none;">Please enter Valid email id</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success">Submit</button>
+      </div>
+    </div>
+  </div>
 </div>

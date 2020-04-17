@@ -1,3 +1,13 @@
+<?php
+require 'mvc/autoloader.php';
+
+$blog = new \controller\blog\BlogController();
+
+$responseGallery = $blog->listBlogController();
+
+$blogLisiting = $responseGallery['result'] ? $responseGallery['data'] : array();
+//echo '<pre>';print_r($blogLisiting);echo '</pre>';
+?>
 <section class="container-fluid">
     <div class="jumbotron bg-dark mt-5">
         <h1>About Our Blogs</h1>
