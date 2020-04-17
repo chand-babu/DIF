@@ -13,7 +13,7 @@ $image_name = $commonService->uploadFilesToDirectory($_FILES['image'], 'category
 if (!empty($image_name) && !empty($_POST['name'])){
     $data = array(
         'cat_id' => $commonService->getUniqueIdentityCode('CAT', false),
-        'name' => $_POST['name'],
+        'name' => trim($_POST['name'],""),
         'image_lg' => $image_name[0],
         'image_sm' => $image_name[1],
         'cat_status' => 1,

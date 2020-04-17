@@ -4,8 +4,10 @@ $category = new \controller\category\CategoryController();
 $response = $category->listCategoryController();
 $categoryListing = $response['result'] ? $response['data'] : array();
 ?>
+
 <link rel="stylesheet" href="./views/categories/categories.style.css" />
 <link rel="stylesheet" href="./views/categories-images/categories-images.css" />
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12 my-5 text-center">

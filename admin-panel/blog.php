@@ -123,6 +123,7 @@ require './shared/footer.php';
 <script>
     $(document).ready(function() {
         var dtable = $('#blogTable').DataTable({
+            "order": [[ 3, "desc" ]],
             "processing": true,
             "ajax": {
                 "url": "./mvc/action/blog/blogListAction.php",

@@ -9,6 +9,10 @@
         $gallery_img = json_decode($galleryLisiting['gallery_images'], true);
         ?>
 <link rel="stylesheet" href="./views/categories-images/categories-images.css" />
+$galleryLisiting = $responseGallery['result'] ? $responseGallery['data'] : array();
+$gallery_img = json_decode($galleryLisiting['gallery_images'], true);
+?>
+
 
 <div class="container-fluid">
     <div class="row my-4">

@@ -134,15 +134,3 @@ let navSlider = new Swiper(navSliderSelector, navSliderOptions);
 mainSlider.controller.control = navSlider;
 navSlider.controller.control = mainSlider;
 
-
-// $('.banner-ghost').scheletrone({
-//     url         : 'http://url/to/file',
-//     ajaxData    : {},
-// });
-// $('.slick-trending-slider').scheletrone({
-//     url         : 'D://WorldWar-C/index.html',
-//     ajaxData    : {},
-// });
-// setTimeout(() => {
-//     //$('.slick-trending-slider').scheletrone('stopLoader');
-// }, 3000);

@@ -11,7 +11,10 @@ $image_name = !empty($_FILES['image']['name']) ? $commonService->uploadFilesToDi
 
 $data = array(
     'blg_id' => $_POST['blg_id'],
-    'title' => $_POST['title'],
+    'cat_id' => $_POST['category'],
+    'title' => trim($_POST['title'],""),
+    'image_alt' => $_POST['image_alt'],
+    'post_url' => trim($_POST['post_url']),
     'description' => $_POST['description'],
     'content' => $_POST['content_description'],
     'image_lg' => $image_name[0],

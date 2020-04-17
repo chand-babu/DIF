@@ -6,9 +6,9 @@ $gallery = new \controller\gallery\GalleryController();
 $responseGallery = $gallery->listGalleryController();
 
 $galleryLisiting = $responseGallery['result'] ? $responseGallery['data'] : array();
-
+// echo '<pre>';print_r($galleryLisiting);echo '</pre>';
 ?>
-<link rel="stylesheet" href="./views/sub-categories/sub-categories.css" />
+
 <div class="container-fluid mt-3 mb-5 p-4 d-none">
     <div class="row">
         <div class="col-12 my-3">

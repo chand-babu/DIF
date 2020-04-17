@@ -14,11 +14,12 @@ if (!isset($_POST['image_index'])) {
     foreach ( $_POST as $key => $value )
     {   
         if ($key == 'category' || $key == 'title' || $key == 'imageDesc' ||
-            $key == 'image-name' || $key == 'gal_id' || $key == 'gal_status') { 
+            $key == 'image-name' || $key == 'gal_id' || $key == 'gal_status'||
+            $key == 'imageAlt' || $key == 'postUrl') { 
         } else {
             $newKey = explode('-', $key);
             $arraySet[$newKey[0]] = $value;
-            if (count($arraySet) == 3) {
+            if (count($arraySet) == 4) {
                 array_push($allData, $arraySet);
                 unset($arraySet);
                 $arraySet = array();
@@ -31,8 +32,10 @@ if (!isset($_POST['image_index'])) {
     $uploadData = array(
         'cat_id' => $_POST['category'],
         'gal_id' => $_POST['gal_id'],
-        'title' => $_POST['title'],
+        'title' => trim($_POST['title'],""),
         'description' => $_POST['imageDesc'],
+        'image_alt' => $_POST['imageAlt'],
+        'post_url' => trim($_POST['post_url']),
         'featured_image_lg' => $feat_image[0],
         'featured_image_sm' => $feat_image[1],
         'gallery_images' => json_encode($allData),
