@@ -415,3 +415,10 @@ p {
 .blog-box-text h4 a {
   color: #333;
 }
+
+
+@media screen and (max-width: 768px) {
+  .swiper-container {
+    width: 100%;
+  }
+}
