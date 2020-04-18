@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div class="row my-4">
-        <div class="col-md-9 page-body">
+        <div class="col-md-9 col-12 page-body">
             <div class="row">
                 <div class="col-md-12 content-page">
                     <div class="col-md-12 blog-post">
@@ -203,7 +203,7 @@
                         </div>
 
                         <!-- Comments Form -->
-                        <div class="card my-4">
+                        <div class="card1 my-4">
                             <h5 class="card-header">Leave a Comment:</h5>
                             <div class="card-body">
                                 <form>
@@ -261,7 +261,7 @@
             </div>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-3 col-12">
             <div class="panel panel-default">
                 <div class="panel-body">
 

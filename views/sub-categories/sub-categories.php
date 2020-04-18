@@ -66,13 +66,13 @@ $galleryLisiting = $responseGallery['result'] ? $responseGallery['data'] : array
         <div class="col-12 mt-4">
             <h1 class="text-center">Gallery</h1>
         </div>
-        <div class="col-md-9 col-12">
+        <div class="col-md-8 col-lg-9 col-12">
             <div class="row">
                 <h4 class="my-5 text-center w-100">Latest Images</h4>
                 <?php
                     foreach ($galleryLisiting as $key => $value) {
                         echo '
-                        <div class="col-4 mb-3">
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-4 mb-3">
                             <div class="position-relative w-100">
                                 <div>
                                     <a href="./galleries-images">
@@ -90,7 +90,7 @@ $galleryLisiting = $responseGallery['result'] ? $responseGallery['data'] : array
             </div>
         </div>
 
-        <div class="col-12 col-md-3 shadow">
+        <div class="col-12 col-md-4 col-lg-3 shadow">
             <div class="row">
                 <div class="col-12 my-5">
                     <h4 class="text-center mb-0">Recents Blogs</h4>

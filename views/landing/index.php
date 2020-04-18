@@ -59,7 +59,7 @@ $blogLisiting = $responseBlog['result'] ? $responseBlog['data'] : array();
             </div>
 
             <!-- Thumbnail navigation -->
-            <div class="swiper-container nav-slider loading">
+            <div class="swiper-container nav-slider loading d-none d-md-block">
                 <div class="swiper-wrapper" role="navigation">
                     <?php
                         foreach ($bannerListing as $key => $value) {
