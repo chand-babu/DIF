@@ -30,7 +30,9 @@ class CategoryModel extends DatabaseService{
     }
 
     public function listCategoryModel() {
-        $query = "SELECT cat_id, name, image_lg, image_sm, cat_status, created, modified FROM category";
+        $query = "SELECT c.cat_id, c.name, c.image_lg, c.image_sm, c.cat_status, c.created, c.modified, (
+            SELECT COUNT(*) FROM gallery g WHERE g.cat_id = c.cat_id) as gal_count
+        FROM category c GROUP BY c.cat_id";
         try {
             $execute = $this->connection->prepare($query);
             $execute->execute();

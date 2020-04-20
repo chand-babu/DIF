@@ -14,6 +14,9 @@
 <script src="<?php echo URL_BASE .'views/sub-views/navigation.js';?>"></script>
 <script src="<?php echo URL_BASE .'views/landing/landing.js';?>"></script>
 <script src="<?php echo URL_BASE .'views/contact/contact.js';?>"></script>
+<script src="<?php echo URL_BASE .'views/search-results/search-results.js';?>"></script>
+<script src="<?php echo URL_BASE .'views/categories-images/categories-images.js';?>"></script>
+<script src="<?php echo URL_BASE .'views/image-share-download/image-share-download.js';?>"></script>
 
 <!-- categories images js -->
 

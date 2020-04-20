@@ -10,7 +10,7 @@ class GalleryModel extends DatabaseService{
     }
 
     public function listGalleryModel() {
-        $query = "SELECT c.name, g.gal_id, g.cat_id, g.title, g.description, g.featured_image_lg, g.featured_image_sm, g.gallery_images, g.gal_status, g.created, g.modified
+        $query = "SELECT c.name, g.gal_id, g.cat_id, g.title, g.description, g.featured_image_lg, g.featured_image_sm, g.gallery_images, g.post_url, g.image_alt, g.gal_status, g.created, g.modified
         FROM gallery g INNER JOIN category c ON g.cat_id = c.cat_id ORDER BY gid DESC";
         try {
             $execute = $this->connection->prepare($query);
@@ -33,12 +33,35 @@ class GalleryModel extends DatabaseService{
     }
 
     public function getGalleryModel($id) {
-        $query = "SELECT gal_id, cat_id, title, description, featured_image_lg, featured_image_sm, gallery_images, gal_status, created, modified
-        FROM gallery WHERE gal_id=:gal_id";
+        $query = "SELECT c.name, g.gal_id, g.cat_id, g.title, g.description, g.featured_image_lg, g.featured_image_sm, g.gallery_images, g.post_url, g.image_alt, g.gal_status, g.created, g.modified
+        FROM gallery g INNER JOIN category c ON g.cat_id = c.cat_id WHERE c.cat_id = (SELECT cat_id FROM category WHERE name = :cat_name)";
         try {
             $execute = $this->connection->prepare($query);
-            $execute->execute(array('gal_id' => $id));
-            $data = $execute->fetch(\PDO::FETCH_ASSOC);
+            $execute->execute(array('cat_name' => $id));
+            $data = $execute->fetchAll(\PDO::FETCH_ASSOC);
+            return array(
+                'result' => true,
+                'message' => 'DATA Listed',
+                'data' => $data,
+                'dev' => ''
+            );
+        } catch (\PDOException $e) {
+            return array(
+                'result' => false,
+                'message' => 'Something went wrong',
+                'data' => [],
+                'dev' => $e->getMessage()
+            );
+        }
+    }
+
+    public function popularGalleryModel() {
+        $query = "SELECT c.name, g.gal_id, g.cat_id, g.title, g.description, g.featured_image_lg, g.featured_image_sm, g.gallery_images, g.post_url, g.image_alt, g.gal_status
+        FROM gallery g INNER JOIN category c ON g.cat_id = c.cat_id WHERE popular_download = 1";
+        try {
+            $execute = $this->connection->prepare($query);
+            $execute->execute();
+            $data = $execute->fetchAll(\PDO::FETCH_ASSOC);
             return array(
                 'result' => true,
                 'message' => 'DATA Listed',

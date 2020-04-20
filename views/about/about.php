@@ -1,4 +1,4 @@
-<!-- <div class="container text-center mt-5">
+<div class="container text-center mt-5">
     <h2>About Us</h2>
     <div>
         <p>Daily Image Funda is all about the innovative images for your daily share needs. We at Daily Image Funda have taken the initiative to create your daily image requirements such as Good Morning, Good Evening, Good Night and other special occasions.</p>
@@ -9,9 +9,9 @@
 
         <p>We invite all users to download, share and request images that serve the community</p>
     </div>
-</div> -->
+</div>
 
-<link rel="stylesheet" href="./views/about/about.css" />
+<!-- <link rel="stylesheet" href="./views/about/about.css" />
 
 <div class="how-section1">
                     <div class="row">
@@ -62,4 +62,4 @@
                             <img src="https://image.ibb.co/gQ9iE9/Work_Section2_freelance_img4.png" class="rounded-circle img-fluid" alt=""/>
                         </div>
                     </div>
-                </div>
+                </div> -->

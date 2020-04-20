@@ -1,6 +1,4 @@
 
-<link rel="stylesheet" href="./views/search-results/search-results.css" />
-
 <div class="container margin-top">
 
 <div class="row">
@@ -8,15 +6,24 @@
             <p class="search__title">
                 Go ahead, and search images
             </p>
-            <input class="search__input" type="text" placeholder="Search">
+            <input id ="inside-search" class="search__input" type="text" placeholder="Search">
+            
         </div>
     </div>
 
     <hgroup class="mb20">
 		<h1>Search Results</h1>
-		<h2 class="lead"><strong class="text-danger">3</strong> results were found for the search for <strong class="text-danger">Lorem</strong></h2>								
+		<h2 class="lead"><strong class="text-danger result">3</strong> results were found for the search for <strong class="text-danger">Lorem</strong></h2>								
 	</hgroup>
 
+
+    <section class="col-xs-12 col-sm-6 col-md-12">
+        <div id="search-add"></div>
+		<div class="text-center mt-4">
+            <input type="hidden" id="count" value="0">
+            <button class="btn btn-danger" onclick="searchCall('')">Load More</button>
+        </div>		
+  
     <section class="col-12 col-md-12">
 		<article class="search-result row">
 			<div class="col-xs-12 col-sm-12 col-md-3">

@@ -42,6 +42,17 @@ $(document).ready(function() {
     });
 });
 
+$("#ch-search").keyup(function(event) {
+    if (event.keyCode === 13) {
+        // Do something
+        locationPath($(this).val());
+    }
+});
+
+function locationPath(val) {
+    location.href = 'search/' + val.split(' ').join('-');
+}
+
 // Params
 let mainSliderSelector = ".main-slider",
   navSliderSelector = ".nav-slider",
@@ -133,4 +144,5 @@ let navSlider = new Swiper(navSliderSelector, navSliderOptions);
 // Matching sliders
 mainSlider.controller.control = navSlider;
 navSlider.controller.control = mainSlider;
+
 

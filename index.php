@@ -21,12 +21,21 @@ $router->get('/galleries', function() {
     echo requireView('sub-categories/sub-categories.php');
 });
 
-$router->get('/galleries-images', function() {
-    echo requireView('categories-images/categories-images.php');
+$router->get('/categories/{gal}', function($gal) {
+    echo requireView('sub-categories/sub-categories.php');
+});
+
+$router->get('/image/{share}', function($share) {
+    echo requireView('image-share-download/image-share-download.php');
+});
+
+$router->get('/search/{val}', function($val) {
+    echo requireView('search-results/search-results.php');
 });
 
 $router->get('/{cat}/{post}', function($cat, $post) {
-    echo requireView('blog-post/blog-post.php');
+    echo requireView('categories-images/categories-images.php');
+    //echo requireView('blog-post/blog-post.php');
 });
 
 $router->get('/about', function() {
@@ -49,13 +58,11 @@ $router->get('/single-blog', function() {
     echo requireView('categories-blog/categories-blog.php');
 });
 
-$router->get('/search-results', function() {
-    echo requireView('search-results/search-results.php');
+$router->get('/404', function() {
+    echo requireView('error/404.php');
 });
 
-$router->get('/image-share-download', function() {
-    echo requireView('image-share-download/image-share-download.php');
-});
+
 
 $router->run();
 

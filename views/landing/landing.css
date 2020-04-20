@@ -416,9 +416,17 @@ p {
   color: #333;
 }
 
+.blog-box-content h4 {
+    height: 80px;    
+}
+
+.blog-box-content p {
+    height: 80px;    
+}
 
 @media screen and (max-width: 768px) {
   .swiper-container {
     width: 100%;
   }
 }
+

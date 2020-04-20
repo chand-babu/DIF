@@ -68,6 +68,12 @@
               <p>Subscribe</p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="popular.php" class="nav-link <?php active('popular.php'); ?>">
+              <i class="nav-icon fas fa-download"></i>
+              <p>Popular Download</p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

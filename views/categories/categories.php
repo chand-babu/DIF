@@ -19,12 +19,15 @@ $categoryListing = $response['result'] ? $response['data'] : array();
                 $index = 0;
                 foreach ($categoryListing as $key => $value) {
                     $date = date('d/M/Y', strtotime(json_decode($value['created'], true)['created_on']));
-                    echo '<div class="card-grid-space col-md-6 col-lg-4 mb-4">
-                        <a class="card d-flex align-items-center justify-content-center" href="./galleries"
+<<
+                    echo '<div class="card-grid-space col-md-4 col-lg-4 mb-4">
+                        <a class="card d-flex align-items-center justify-content-center" href="./categories/'.str_replace(' ','-', $value['name']).'"
+==
+                   
                             style="--bg-img: url(../../' . $value['image_sm'] . '">
                             <div>
                                 <h1>' . $value['name'] . '</h1>
-                                <div class="date">' . $date . '</div>
+                                <!-- <div class="date">' . $date . '</div> -->
                                 <div class="tags">
                                     <div class="tag">' . $value['name'] . '</div>
                                 </div>
@@ -55,65 +58,49 @@ $categoryListing = $response['result'] ? $response['data'] : array();
         </div>
 
         <div class="col-md-3 sidebar">
-					<div class="widget widget-search">
-						<form action="#" method="get" accept-charset="utf-8">
-							<input type="text" name="widget-search" placeholder="Search">
-						</form>
-					</div>
-					<div class="widget widget-categories">
-						<div class="widget-title">
-							<h3>Categories</h3>
-						</div>
-						<ul class="cat-list">
-							<li>
-								<a href="#"><i class="fas fa-chevron-right"></i> Accessories<span>(03)</span></a>
-							</li>
-							<li>
-								<a href="#"><i class="fas fa-chevron-right"></i> Cameras<span>(19)</span></a>
-							</li>
-							<li>
-								<a href="#"><i class="fas fa-chevron-right"></i> Computers<span>(56)</span></a>
-							</li>
-							<li>
-								<a href="#"><i class="fas fa-chevron-right"></i> Laptops<span>(03)</span></a>
-							</li>
-							<li>
-								<a href="#"><i class="fas fa-chevron-right"></i> Networking<span>(03)</span></a>
-							</li>
-							<li>
-								<a href="#"><i class="fas fa-chevron-right"></i> Old Products<span>(89)</span></a>
-							</li>
-							<li>
-								<a href="#"><i class="fas fa-chevron-right"></i> Smartphones<span>(90)</span></a>
-							</li>
-							<li>
-								<a href="#"><i class="fas fa-chevron-right"></i> Software<span>(23)</span></a>
-							</li>
-						</ul>
-					</div>
-					<div class="widget widget-tags">
-						<div class="widget-title">
-							<h3>Popular Tags</h3>
-						</div>
-						<ul class="tag-list">
-							<li>
-								<a href="#" class="waves-effect waves-teal">Phone</a>
-							</li>
-							<li>
-								<a href="#" class="waves-effect waves-teal">Cameras</a>
-							</li>
-							<li>
-								<a href="#" class="waves-effect waves-teal">Computers</a>
-							</li>
-							<li>
-								<a href="#" class="waves-effect waves-teal">Laptops</a>
-							</li>
-							<li>
-								<a href="#" class="waves-effect waves-teal">Headphones</a>
-							</li>
-						</ul>
-					</div>
-				</div>
+            <!-- <div class="widget widget-search">
+                <form action="#" method="get" accept-charset="utf-8">
+                    <input type="text" name="widget-search" placeholder="Search">
+                </form>
+            </div> -->
+            <div class="widget widget-categories">
+                <div class="widget-title">
+                    <h3>Categories</h3>
+                </div>
+                <ul class="cat-list">
+                <?php
+                    //print_r($categoryListing);
+                    foreach ($categoryListing as $key => $value) {
+                        echo '<li>
+                                <a href="'.URL_BASE.'categories/'.str_replace(' ','-', $value['name']).'"><i class="fas fa-chevron-right"></i> '.$value['name'].'<span>('.$value['gal_count'].')</span></a>
+                            </li>';
+                    }
+                ?>	
+                </ul>
+            </div>
+            <!-- <div class="widget widget-tags">
+                <div class="widget-title">
+                    <h3>Popular Tags</h3>
+                </div>
+                <ul class="tag-list">
+                    <li>
+                        <a href="#" class="waves-effect waves-teal">Phone</a>
+                    </li>
+                    <li>
+                        <a href="#" class="waves-effect waves-teal">Cameras</a>
+                    </li>
+                    <li>
+                        <a href="#" class="waves-effect waves-teal">Computers</a>
+                    </li>
+                    <li>
+                        <a href="#" class="waves-effect waves-teal">Laptops</a>
+                    </li>
+                    <li>
+                        <a href="#" class="waves-effect waves-teal">Headphones</a>
+                    </li>
+                </ul>
+            </div> -->
+        </div>
 
     </div>
 </div>

@@ -7,6 +7,7 @@ $(window).scroll(function (event) {
     }
 });
 $(document).ready(function() {
+    $('#add-model').html(modelAdd());
     $("#formModal").on("click",".btn-success", function(){ 
         var pattern = /^\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i;
         if ($('#sub-email').val() == '' || !pattern.test($('#sub-email').val())) {
@@ -49,4 +50,45 @@ function modelMessageCall(title, data){
 function pophit(){
     $("#formModal").modal();
     $("#formModal").css('color', 'black');
+}
+
+function modelAdd() {
+    return `<div class="modal fade mt-5" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade mt-5" id="formModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Subscribe</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <input type="hidden" id="blg-model-id" value="">
+                <div class="modal-body">
+                    <label for="">Email ID</label>
+                    <input id="sub-email" type="email" name="email" class="form-control" placeholder="example@example.com">
+                    <div id="sub-err" class="text-danger" style="display:none;">Please enter Valid email id</div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>`;
 }

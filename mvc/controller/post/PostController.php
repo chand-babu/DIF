@@ -9,8 +9,8 @@ class PostController {
         $this->post = new PostModel();
     }
 
-    public function searchPostController($data){
-        return $this->post->searchPostModel($data);
+    public function searchPostController($data,$page){
+        return $this->post->searchPostModel($data,$page);
     }
 
     public function getPostController($data){
