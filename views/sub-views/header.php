@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="<?php echo URL_BASE .'views/sub-views/footer-bar.css';?>" />
     <link rel="stylesheet" href="<?php echo URL_BASE .'views/categories-images/categories-images.css';?>" />
     <link rel="stylesheet" href="<?php echo URL_BASE .'views/sub-categories/sub-categories.css';?>" />
+    <link rel="stylesheet" href="<?php echo URL_BASE .'views/image-share-download/image-share-download.css';?>">
+    <link rel="stylesheet" href="<?php echo URL_BASE .'views/search-results/search-results.css';?>" />
 </head>
 <body>
 <?php

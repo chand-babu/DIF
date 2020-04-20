@@ -1,13 +1,22 @@
-<link rel="stylesheet" href="./views/categories-images/categories-images.css" />
-<link rel="stylesheet" href="./views/image-share-download/image-share-download.css">
+<?php
+require 'mvc/autoloader.php';
+$category = new \controller\category\CategoryController();
+$response = $category->listCategoryController();
+$categoryListing = $response['result'] ? $response['data'] : array();
+
+// $uriArray = explode('/', $_SERVER['REQUEST_URI']);
+// $post = str_replace('-', ' ', $uriArray[count($uriArray) - 1]);
+//$image_values = $_SESSION['image'][$post];
+// echo '<pre>';print_r($_SESSION);echo '</pre>';
+?>
 
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-9 mt-5">
             <div class="blog column text-center">
-                <img src="https://images.pexels.com/photos/129441/pexels-photo-129441.jpeg?h=350&auto=compress&cs=tinysrgb" alt="" width="100%">
-                <h4 class="mt-2">Post Title</h4>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</p>
+                <img id="image-view" src="" alt="" width="100%">
+                <h4 id="image-title" class="mt-2"></h4>
+                <p id="image-desc"></p>
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
                         <div class="header_links">
@@ -21,51 +30,37 @@
                          </div>
                     </div>
                     <div class="col-md-6 col-sm-12">
-                        <button class="w-100 n-button">
-                            <i class="fa fa-download"></i> Download
-                        </button>
+                        <a id="img-download" href="" download>
+                            <button class="w-100 n-button">
+                                <i class="fa fa-download"></i> Download
+                            </button>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-md-3 sidebar mt-5">
-            <div class="widget widget-search">
+            <!-- <div class="widget widget-search">
                 <form action="#" method="get" accept-charset="utf-8">
                     <input type="text" name="widget-search" placeholder="Search">
                 </form>
-            </div>
+            </div> -->
             <div class="widget widget-categories">
                 <div class="widget-title">
                     <h3>Categories</h3>
                 </div>
                 <ul class="cat-list">
-                    <li>
-                        <a href="#"><i class="fas fa-chevron-right"></i> Accessories<span>(03)</span></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fas fa-chevron-right"></i> Cameras<span>(19)</span></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fas fa-chevron-right"></i> Computers<span>(56)</span></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fas fa-chevron-right"></i> Laptops<span>(03)</span></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fas fa-chevron-right"></i> Networking<span>(03)</span></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fas fa-chevron-right"></i> Old Products<span>(89)</span></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fas fa-chevron-right"></i> Smartphones<span>(90)</span></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fas fa-chevron-right"></i> Software<span>(23)</span></a>
-                    </li>
+                <?php
+                    //print_r($categoryListing);
+                    foreach ($categoryListing as $key => $value) {
+                        echo '<li>
+                                <a href="'.URL_BASE.'categories/'.str_replace(' ','-', $value['name']).'"><i class="fas fa-chevron-right"></i> '.$value['name'].'<span>('.$value['gal_count'].')</span></a>
+                            </li>';
+                    }
+                ?>	
                 </ul>
             </div>
-            <div class="widget widget-tags">
+            <!-- <div class="widget widget-tags">
                 <div class="widget-title">
                     <h3>Popular Tags</h3>
                 </div>
@@ -86,7 +81,7 @@
                         <a href="#" class="waves-effect waves-teal">Headphones</a>
                     </li>
                 </ul>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>

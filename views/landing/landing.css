@@ -415,3 +415,11 @@ p {
 .blog-box-text h4 a {
   color: #333;
 }
+
+.blog-box-content h4 {
+    height: 80px;    
+}
+
+.blog-box-content p {
+    height: 80px;    
+}

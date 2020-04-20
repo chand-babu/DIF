@@ -30,7 +30,7 @@ class GalleryModel extends DatabaseService{
     }
 
     public function listGalleryModel() {
-        $query = "SELECT gal_id, cat_id, title, description, featured_image_lg, featured_image_sm, gallery_images, gal_status, created, modified, trending_order, image_alt, post_url
+        $query = "SELECT gal_id, cat_id, title, description, featured_image_lg, featured_image_sm, gallery_images, gal_status, created, modified, trending_order, image_alt, post_url, popular_download
         FROM gallery order by gid desc";
         try {
             $execute = $this->connection->prepare($query);
@@ -53,7 +53,7 @@ class GalleryModel extends DatabaseService{
     }
 
     public function getGalleryModel($input) {
-        $query = 'SELECT gal_id, cat_id, title, description, featured_image_lg, featured_image_sm, gallery_images, gal_status, created, modified, image_alt, post_url
+        $query = 'SELECT gal_id, cat_id, title, description, featured_image_lg, featured_image_sm, gallery_images, gal_status, created, modified, image_alt, post_url, popular_download
         FROM gallery WHERE gal_id = :gal_id LIMIT 1';
         try {
             $execute = $this->connection->prepare($query);
@@ -151,6 +151,26 @@ class GalleryModel extends DatabaseService{
         try {
             $execute = $this->connection->prepare($query);
             $execute->execute();
+            return array(
+                'result' => true,
+                'message' => 'Updated Successfully',
+                'dev' => ''
+            );
+        } catch (\PDOException $e) {
+            return array(
+                'result' => false,
+                'message' => 'Something went wrong',
+                'data' => [],
+                'dev' => $e->getMessage()
+            );
+        }
+    }
+
+    public function popularGalleryModel($input) {
+        $query = "UPDATE gallery SET popular_download = :status WHERE gal_id = :gal_id";
+        try {
+            $execute = $this->connection->prepare($query);
+            $execute->execute($input);
             return array(
                 'result' => true,
                 'message' => 'Updated Successfully',

@@ -1,15 +1,29 @@
 <?php
 require 'mvc/autoloader.php';
 
-$gallery = new \controller\gallery\GalleryController();
+$uriArray = explode('/', $_SERVER['REQUEST_URI']);
+$post = $uriArray[count($uriArray) - 1];
 
-$responseGallery = $gallery->listGalleryController();
+$gallery = new \controller\gallery\GalleryController();
+$blog = new \controller\blog\BlogController();
+
+if ($post == 'galleries') {
+    $responseGallery = $gallery->listGalleryController();
+} else {
+    $responseGallery = $gallery->getGalleryController(str_replace('-',' ',$post));
+}
+
+$responseBlog = $blog->letestBlogController();
 
 $galleryLisiting = $responseGallery['result'] ? $responseGallery['data'] : array();
-// echo '<pre>';print_r($galleryLisiting);echo '</pre>';
+$blogLisiting = $responseBlog['result'] ? $responseBlog['data'] : array();
+//echo '<pre>';print_r($responseGallery);echo '</pre>';
+if (empty($galleryLisiting)){
+    header("location: ".URL_BASE.'404');
+}
 ?>
 
-<div class="container-fluid mt-3 mb-5 p-4 d-none">
+<!-- <div class="container-fluid mt-3 mb-5 p-4 d-none">
     <div class="row">
         <div class="col-12 my-3">
             <h1>Gallery</h1>
@@ -59,7 +73,7 @@ $galleryLisiting = $responseGallery['result'] ? $responseGallery['data'] : array
             </figure>
         </div>
     </div>
-</div>
+</div> -->
 
 <div class="container-fluid">
     <div class="row">
@@ -70,13 +84,19 @@ $galleryLisiting = $responseGallery['result'] ? $responseGallery['data'] : array
             <div class="row">
                 <h4 class="my-5 text-center w-100">Latest Images</h4>
                 <?php
+                    //unset($_SESSION['image']);
+                    //$image_array = [];
                     foreach ($galleryLisiting as $key => $value) {
+                        //$_SESSION['image'] = array($value['title'] => $value);
+                        //array_push($image_array[$value['title']], $value);
+                        //$image_array[$value['title']] = $value;
+                        //print_r($value);
                         echo '
                         <div class="col-4 mb-3">
                             <div class="position-relative w-100">
                                 <div>
-                                    <a href="./galleries-images">
-                                        <img class="w-100" src=".'.$value['featured_image_sm'].'" height="216px" />
+                                    <a href="'.URL_BASE.str_replace(' ', '-', $value['name']).'/'.$value['post_url'].'">
+                                        <img class="w-100" src="'.URL_BASE.$value['featured_image_sm'].'" height="216px" />
                                     </a>
                                 </div>
                                 <div class="position-absolute photo-name">
@@ -85,6 +105,7 @@ $galleryLisiting = $responseGallery['result'] ? $responseGallery['data'] : array
                             </div>
                         </div>';
                     }
+                    //$_SESSION['image'] = $image_array;
                 ?>
                 
             </div>
@@ -95,32 +116,25 @@ $galleryLisiting = $responseGallery['result'] ? $responseGallery['data'] : array
                 <div class="col-12 my-5">
                     <h4 class="text-center mb-0">Recents Blogs</h4>
                 </div>
-                <div class="col-12 mb-3">
-                    <div class="shadow w-100">
-                        <img class="w-100" src="http://unsplash.it/600/400?image=940" alt="blog image" />
-                        <div class="text-center py-3 bg-white text-dark">
-                            Blog Title what is blog??? blog blog blog
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 mb-3">
-                    <div class="shadow w-100">
-                        <img class="w-100" src="http://unsplash.it/640/450?image=906" alt="blog image" />
-                        <div class="text-center py-3 bg-white text-dark">
-                            Blog Title
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 mb-3">
-                    <div class="shadow w-100">
-                        <img class="w-100" src="http://unsplash.it/600/400?image=940" alt="blog image" />
-                        <div class="text-center py-3 bg-white text-dark">
-                            Blog Title
-                        </div>
-                    </div>
-                </div>
+                <?php
+                        foreach ($blogLisiting as $key => $value) {
+                            //print_r($value);
+                            
+                            echo '
+                            <a href="'.URL_BASE.str_replace(' ','-',$value['name']).'/'.$value['post_url'].'">
+                            <div class="col-12 mb-3">
+                                <div class="shadow w-100">
+                                    <img class="w-100" src="'.URL_BASE.$value['image_sm'].'" alt="blog image" />
+                                    <div class="text-center py-3 bg-white text-dark">
+                                        '.$value['title'].'
+                                    </div>
+                                </div>
+                            </div></a>';
+                        }
+                    ?>
+                
                 <div class="col-12">
-                    <button class="n-button w-100">View More</button>
+                <a href="<?php echo URL_BASE; ?>blog"><button class="n-button w-100">View More</button></a>
                 </div>
             </div>
         </div>

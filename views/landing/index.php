@@ -9,12 +9,22 @@ $blog = new \controller\blog\BlogController();
 $response = $category->listCategoryController();
 $responseBanner = $banner->listBannerController();
 $responseGallery = $gallery->listGalleryController();
+$popularGallery = $gallery->popularGalleryController();
 $responseBlog = $blog->letestBlogController();
 
 $categoryListing = $response['result'] ? $response['data'] : array();
 $bannerListing = $responseBanner['result'] ? $responseBanner['data'] : array();
 $galleryLisiting = $responseGallery['result'] ? $responseGallery['data'] : array();
 $blogLisiting = $responseBlog['result'] ? $responseBlog['data'] : array();
+$popularLisiting = $popularGallery['result'] ? $popularGallery['data'] : array();
+//print_r($popularLisiting);
+$popularImages = array();
+foreach ($popularLisiting as $key => $value) {
+    array_push($popularImages, $value['featured_image_sm']);
+    foreach (json_decode($value['gallery_images'], true) as $childkey => $childvalue) {
+        array_push($popularImages, json_decode($childvalue['imageName'], true)[1]);
+    }
+}
 ?>
 
 <div class="container-fluid">
@@ -24,7 +34,7 @@ $blogLisiting = $responseBlog['result'] ? $responseBlog['data'] : array();
             <p class="search__title">
                 Go ahead, and search images
             </p>
-            <input class="search__input" type="text" placeholder="Search">
+            <input id="ch-search" class="search__input" type="text" placeholder="Search">
         </div>
     </div>
 
@@ -118,7 +128,7 @@ $blogLisiting = $responseBlog['result'] ? $responseBlog['data'] : array();
             <div class="container">
                 <div class="row">
                     <div class="col-12 mt-3 text-uppercase text-center">
-                        <h4>Categories</h4>
+                        <h4>Trending Categories</h4>
                         <div class="slick-trending-slider mt-3">
                         <?php
                             foreach ($categoryListing as $key => $value) {
@@ -147,7 +157,7 @@ $blogLisiting = $responseBlog['result'] ? $responseBlog['data'] : array();
                         <?php
                             foreach ($galleryLisiting as $key => $value) {
                                 echo '
-                                <a href="./galleries-images"><div class="img-container-trending">
+                                <a href="./'.str_replace(' ', '-', $value['name']).'/'.$value['post_url'].'"><div class="img-container-trending">
                                     <div class="position-relative">
                                         <div>
                                             <img src=".'.$value['featured_image_sm'].'" alt="Banner One" />
@@ -166,74 +176,27 @@ $blogLisiting = $responseBlog['result'] ? $responseBlog['data'] : array();
                     <div class="col-12 mt-3 text-uppercase text-center">
                         <h4>Popular Downloads</h4>
                         <div class="slick-trending-slider mt-3">
-                            <div class="img-container-trending">
-                                <div class="position-relative">
-                                    <div>
-                                        <img src="./assets/images/temp/banner1.jpg" alt="Banner One" />
-                                    </div>
-                                    <div class="w-100 h-100 image-name">
+                            <?php 
+                                foreach ($popularImages as $key => $value) {
+                                    echo '<div class="img-container-trending">
+                                    <div class="position-relative">
                                         <div>
-                                            <a href="./assets/images/temp/banner1.jpg" download
-                                            style="text-decoration: none;outline:none;">
-                                                <i class="fas fa-download mr-3"></i>
-                                            </a>
-                                            <i class="fas fa-share-alt"></i>
+                                            <img src=".'.$value.'" alt="Banner One" />
+                                        </div>
+                                        <div class="w-100 h-100 image-name">
+                                            <div>
+                                                <a href=".'.$value.'" download
+                                                style="text-decoration: none;outline:none;">
+                                                    <i class="fas fa-download mr-3"></i>
+                                                </a>
+                                                <i class="fas fa-share-alt"></i>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="img-container-trending">
-                                <div class="position-relative">
-                                    <div>
-                                        <img src="./assets/images/temp/banner1.jpg" alt="Banner One" />
-                                    </div>
-                                    <div class="w-100 h-100 image-name">
-                                        <div>
-                                            <i class="fas fa-download mr-3"></i>
-                                            <i class="fas fa-share-alt"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="img-container-trending">
-                                <div class="position-relative">
-                                    <div>
-                                        <img src="./assets/images/temp/banner1.jpg" alt="Banner One" />
-                                    </div>
-                                    <div class="w-100 h-100 image-name">
-                                        <div>
-                                            <i class="fas fa-download mr-3"></i>
-                                            <i class="fas fa-share-alt"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="img-container-trending">
-                                <div class="position-relative">
-                                    <div>
-                                        <img src="./assets/images/temp/banner1.jpg" alt="Banner One" />
-                                    </div>
-                                    <div class="w-100 h-100 image-name">
-                                        <div>
-                                            <i class="fas fa-download mr-3"></i>
-                                            <i class="fas fa-share-alt"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="img-container-trending">
-                                <div class="position-relative">
-                                    <div>
-                                        <img src="./assets/images/temp/banner1.jpg" alt="Banner One" />
-                                    </div>
-                                    <div class="w-100 h-100 image-name">
-                                        <div>
-                                            <i class="fas fa-download mr-3"></i>
-                                            <i class="fas fa-share-alt"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                </div>';     
+                                }
+                            ?>
+                            
                         </div>
                     </div>
                 </div>
@@ -310,7 +273,7 @@ $blogLisiting = $responseBlog['result'] ? $responseBlog['data'] : array();
                                                 </div>
                                             </div>
                                         </div>
-                                        <a href="./blog" class="btn btn-default site-btn text-white">Read More</a>
+                                        <a href="'.URL_BASE.str_replace(' ','-',$value['name']).'/'.$value['post_url'].'" class="btn btn-default site-btn text-white">Read More</a>
                                     </div>
                                 </div>
                             </div> ';
@@ -325,55 +288,13 @@ $blogLisiting = $responseBlog['result'] ? $responseBlog['data'] : array();
                 <div class="title"> Categories </div>
                 <ul class="side-nav-landing sticky-top">
                     <?php
+                        //print_r($categoryListing);
                         foreach ($categoryListing as $key => $value) {
-                            echo '<li><a class="text-white" href="./categories" style="text-decoration:none;"><span>'.$value['name'].'</span> <i class="fas fa-angle-double-right float-right"></i></a></li>';
+                            echo '<li><a class="text-white" href="'.URL_BASE.'categories/'.str_replace(' ','-', $value['name']).'" style="text-decoration:none;"><span>'.$value['name'].' ('.$value['gal_count'].')</span> <i class="fas fa-angle-double-right float-right"></i></a></li>';
                         }
                     ?>
                 </ul>
             </div>
         </div>
     </div>
-</div>
-
-<div class="modal fade mt-5" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" 
-aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade mt-5" id="formModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" 
-aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Subscribe</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <input type="hidden" id="blg-model-id" value="">
-      <div class="modal-body">
-            <label for="">Email ID</label>
-            <input id="sub-email" type="email" name="email" class="form-control"
-            placeholder="example@example.com">
-            <div id="sub-err" class="text-danger" style="display:none;">Please enter Valid email id</div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-success">Submit</button>
-      </div>
-    </div>
-  </div>
 </div>

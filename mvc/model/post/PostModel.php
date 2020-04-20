@@ -43,7 +43,7 @@ class PostModel extends DatabaseService{
         try {
             $execute = $this->connection->prepare($query);
             $execute->execute($input);
-            $blogData = $execute->fetchAll(\PDO::FETCH_ASSOC);
+            $blogData = $execute->fetch(\PDO::FETCH_ASSOC);
             return array(
                 'result' => true,
                 'message' => 'DATA Listed',
@@ -61,17 +61,21 @@ class PostModel extends DatabaseService{
         }
     }
 
-    public function searchPostModel($input) {
-        $query = "SELECT title, cat_id, post_url, description FROM gallery
-                WHERE post_url LIKE '%:value%' OR cat_id IN (SELECT cat_id FROM category
-                WHERE name LIKE '%:value%')
+    public function searchPostModel($data, $page) {
+        $input = str_replace('-',' ', $data);
+        $pages = $page;
+        $query = "SELECT c.name, g.title, g.cat_id, g.post_url, g.description, g.featured_image_sm, g.created
+                FROM gallery g INNER JOIN category c
+                ON c.cat_id = g.cat_id
+                WHERE g.post_url LIKE '%".$input."%' OR g.cat_id IN (SELECT cat_id FROM category
+                WHERE name LIKE '%".$input."%')
                 UNION
-                SELECT title, cat_id, post_url, description FROM blog
-                WHERE post_url LIKE '%:value%' OR cat_id IN (SELECT cat_id FROM category
-                WHERE name LIKE '%:value%')";
+                SELECT c.name, b.title, b.cat_id, b.post_url, b.description, b.image_sm, b.created FROM blog b INNER JOIN category c
+                WHERE b.post_url LIKE '%".$input."%' OR b.cat_id IN (SELECT cat_id FROM category
+                WHERE name LIKE '%".$input."%') LIMIT 3 OFFSET ".$pages;
         try {
             $execute = $this->connection->prepare($query);
-            $execute->execute($input);
+            $execute->execute();
             $blogData = $execute->fetchAll(\PDO::FETCH_ASSOC);
             return array(
                 'result' => true,

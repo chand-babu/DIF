@@ -18,3 +18,11 @@ overlay.addEventListener('click', close);
 
 
  */
+
+function downloadPage (data) {
+    if (!localStorage.getItem("image-download")){
+        localStorage.setItem("image-download", JSON.stringify(data));
+        //console.log(data);
+    }
+    location.href = './../image/' + data.imageTitle;
+}

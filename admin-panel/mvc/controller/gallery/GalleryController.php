@@ -33,4 +33,8 @@ class GalleryController {
     public function orderGalleryController($data){
         return $this->gallery->orderGalleryModel($data);
     }
+
+    public function popularGalleryController($data){
+        return $this->gallery->popularGalleryModel($data);
+    }
 }
