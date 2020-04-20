@@ -27,15 +27,9 @@ $blogLatestLisiting = $responseBlog['result'] ? $responseBlog['data'] : array();
     <div class="container">
 
         <div class="row">
-// commit
-            <div class="col-lg-6 offset-lg-3 text-center">
+            <div class="col-lg-6 offset-lg-3 col-12 text-center">
                 <h2><span class="fa fa-minus icon-minus"></span><?php echo $blogLisiting['data']['title']; ?><span class="fa fa-minus icon-minus"></span></h2>
                 <p><?php echo $blogLisiting['data']['description']; ?></p><br>
-// commit =
-            <div class="col-lg-6 offset-lg-3 col-12 text-center">
-                <h2><span class="fa fa-minus icon-minus"></span>Pongal Images<span class="fa fa-minus icon-minus"></span></h2>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus </p><br>
-// commit master
             </div>
         </div>
 
@@ -66,7 +60,6 @@ $blogLatestLisiting = $responseBlog['result'] ? $responseBlog['data'] : array();
                 </div>
             </div>
 
-// commit
             <!-- sidebar -->
             <div class="col-md-3 sidebar">
                 <!-- <div class="widget widget-search">
@@ -77,15 +70,6 @@ $blogLatestLisiting = $responseBlog['result'] ? $responseBlog['data'] : array();
                 <div class="widget widget-categories">
                     <div class="widget-title">
                         <h3>Categories</h3>
-// commit ===
-                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mb-3" data-aos="fade-right">
-                        <div class="blog column text-center">
-                            <img src="https://images.pexels.com/photos/129441/pexels-photo-129441.jpeg?h=350&auto=compress&cs=tinysrgb" alt="" width="100%">
-                            <h4 class="mt-2">Post Title</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</p>
-                            <a href="./image-share-download">Read More</a>
-                        </div>
-// commit master
                     </div>
                     <ul class="cat-list">
                     <?php
@@ -121,11 +105,7 @@ $blogLatestLisiting = $responseBlog['result'] ? $responseBlog['data'] : array();
                     </ul>
                 </div> -->
             </div>
-            
-
             </div>
-
-// commit
     </div>
 </section>
 
@@ -138,31 +118,13 @@ $blogLatestLisiting = $responseBlog['result'] ? $responseBlog['data'] : array();
                         <!-- Post Headline Start -->
                         <div class="post-title">
                             <h1><?php echo $blogLisiting['data']['title']; ?></h1>
-// commit ==
-                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mb-3" data-aos="fade-up">
-                        <div class="blog column text-center">
-                            <img src="https://images.pexels.com/photos/129105/pexels-photo-129105.jpeg?h=350&auto=compress&cs=tinysrgb" alt="" width="100%">
-                            <h4 class="mt-2">Post Title</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</p>
-                            <a href="#">Read More</a>
-// commit master
                         </div>
                         <img class="w-100" src="./..<?php echo $blogLisiting['data']['image_lg']; ?>" alt="Blog Banner">
                         <!-- Post Headline End -->
 
-
-// commit
                         <!-- Post Detail Start -->
                         <div class="post-info mt-3">
                             <span><i class="fa fa-calendar" aria-hidden="true"></i> <?php echo date('d/M/Y', strtotime(json_decode($blogLisiting['data']['created'], true)['created_on'])); ?> </span>
-// commit ==
-                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mb-3" data-aos="fade-left">
-                        <div class="blog column text-center">
-                            <img src="https://images.pexels.com/photos/39811/pexels-photo-39811.jpeg?h=350&auto=compress&cs=tinysrgb" alt="" width="100%">
-                            <h4 class="mt-2">Post Title</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</p>
-                            <a href="#">Read More</a>
-// commit master
                         </div>
                         <!-- Post Detail End -->
 
@@ -170,7 +132,6 @@ $blogLatestLisiting = $responseBlog['result'] ? $responseBlog['data'] : array();
                         <p><?php echo $blogLisiting['data']['description']; ?></p>
 
 
-// commit
                         <div><?php echo $blogLisiting['data']['content']; ?></div>
                         <!-- Post List Style End -->
 
@@ -190,17 +151,8 @@ $blogLatestLisiting = $responseBlog['result'] ? $responseBlog['data'] : array();
                                     consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
                                     dolore magna ad minim veniam.</p>
                             </div>
-// commit ==
-                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mb-3" data-aos="fade-left">
-                        <div class="blog column text-center">
-                            <img src="https://images.pexels.com/photos/39811/pexels-photo-39811.jpeg?h=350&auto=compress&cs=tinysrgb" alt="" width="100%">
-                            <h4 class="mt-2">Post Title</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</p>
-                            <a href="#">Read More</a>
-// commit master
                         </div>
 
-// commit
                         <!-- Comments Form -->
                         <div class="card my-4">
                             <h5 class="card-header">Leave a Comment:</h5>
@@ -217,17 +169,8 @@ $blogLatestLisiting = $responseBlog['result'] ? $responseBlog['data'] : array();
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </form>
                             </div>
-// commit ==
-                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mb-3" data-aos="fade-left">
-                        <div class="blog column text-center">
-                            <img src="https://images.pexels.com/photos/39811/pexels-photo-39811.jpeg?h=350&auto=compress&cs=tinysrgb" alt="" width="100%">
-                            <h4 class="mt-2">Post Title</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</p>
-                            <a href="#">Read More</a>
-// commit master
                         </div>
 
-// commit
                         <!-- Single Comment -->
                         <div class="media mb-4">
                             <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
@@ -235,14 +178,6 @@ $blogLatestLisiting = $responseBlog['result'] ? $responseBlog['data'] : array();
                                 <h5 class="mt-0">Commenter Name</h5>
                                 Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
                             </div>
-// commit ==
-                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mb-3" data-aos="fade-left">
-                        <div class="blog column text-center">
-                            <img src="https://images.pexels.com/photos/39811/pexels-photo-39811.jpeg?h=350&auto=compress&cs=tinysrgb" alt="" width="100%">
-                            <h4 class="mt-2">Post Title</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</p>
-                            <a href="#">Read More</a>
-// commit master
                         </div>
 
                         <!-- Comment with nested comments -->
@@ -277,7 +212,6 @@ $blogLatestLisiting = $responseBlog['result'] ? $responseBlog['data'] : array();
             </div>
         </div>
 
-// commit
         <div class="col-md-3">
             <div class="panel panel-default">
                 <div class="panel-body">
@@ -293,75 +227,11 @@ $blogLatestLisiting = $responseBlog['result'] ? $responseBlog['data'] : array();
                             </div>
                         </div>
                     </form> -->
-// commit ==
-            <!-- sidebar -->
-            <div class="col-md-3 col-12 sidebar">
-					<div class="widget widget-search">
-						<form action="#" method="get" accept-charset="utf-8">
-							<input type="text" name="widget-search" placeholder="Search">
-						</form>
-					</div>
-					<div class="widget widget-categories">
-						<div class="widget-title">
-							<h3>Categories</h3>
-						</div>
-						<ul class="cat-list">
-							<li>
-								<a href="#"><i class="fas fa-chevron-right"></i> Accessories<span>(03)</span></a>
-							</li>
-							<li>
-								<a href="#"><i class="fas fa-chevron-right"></i> Cameras<span>(19)</span></a>
-							</li>
-							<li>
-								<a href="#"><i class="fas fa-chevron-right"></i> Computers<span>(56)</span></a>
-							</li>
-							<li>
-								<a href="#"><i class="fas fa-chevron-right"></i> Laptops<span>(03)</span></a>
-							</li>
-							<li>
-								<a href="#"><i class="fas fa-chevron-right"></i> Networking<span>(03)</span></a>
-							</li>
-							<li>
-								<a href="#"><i class="fas fa-chevron-right"></i> Old Products<span>(89)</span></a>
-							</li>
-							<li>
-								<a href="#"><i class="fas fa-chevron-right"></i> Smartphones<span>(90)</span></a>
-							</li>
-							<li>
-								<a href="#"><i class="fas fa-chevron-right"></i> Software<span>(23)</span></a>
-							</li>
-						</ul>
-					</div>
-					<div class="widget widget-tags">
-						<div class="widget-title">
-							<h3>Popular Tags</h3>
-						</div>
-						<ul class="tag-list">
-							<li>
-								<a href="#" class="waves-effect waves-teal">Phone</a>
-							</li>
-							<li>
-								<a href="#" class="waves-effect waves-teal">Cameras</a>
-							</li>
-							<li>
-								<a href="#" class="waves-effect waves-teal">Computers</a>
-							</li>
-							<li>
-								<a href="#" class="waves-effect waves-teal">Laptops</a>
-							</li>
-							<li>
-								<a href="#" class="waves-effect waves-teal">Headphones</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-            
-// commit master
 
                     <h4 class="text-center">Popular Posts!</h4>
                     <?php 
                         foreach ($blogLatestLisiting as $key => $value) {
-                            echo 'href="javascript:void(0)"
+                            echo '
                             <a class="text-white" href="'.URL_BASE.str_replace(' ','-',$value['name']).'/'.$value['post_url'].'">
                             <div class="row">
                                 <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">

@@ -1,5 +1,6 @@
 <?php 
 $base = rtrim(rtrim($_SERVER['PHP_SELF'], $_SERVER['REQUEST_URI']), 'index.php');
+// define("URL_BASE", 'http://version2.dailyimagefunda.com/');
 define("URL_BASE", $base);
 include_once './helpers/init.php';
 

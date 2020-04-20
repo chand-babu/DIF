@@ -19,10 +19,8 @@ $categoryListing = $response['result'] ? $response['data'] : array();
                 $index = 0;
                 foreach ($categoryListing as $key => $value) {
                     $date = date('d/M/Y', strtotime(json_decode($value['created'], true)['created_on']));
-<<
                     echo '<div class="card-grid-space col-md-4 col-lg-4 mb-4">
                         <a class="card d-flex align-items-center justify-content-center" href="./categories/'.str_replace(' ','-', $value['name']).'"
-==
                    
                             style="--bg-img: url(../../' . $value['image_sm'] . '">
                             <div>
