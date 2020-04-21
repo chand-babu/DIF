@@ -137,7 +137,7 @@ require './shared/footer.php';
                     "data": "Action",
                     "render": function(data, type, row){
                         return `<a href="./galleryEdit.php?id=${row.gal_id}"><i class="fa fa-edit"></i></a> |
-                        <a href="javascript:void(0)" onclick='del(${JSON.stringify(row)})'><i class="fa fa-trash"></i></a>`;
+                        <a href="javascript:void(0)" onclick='del(encodeURIComponent(${JSON.stringify(row)}))'><i class="fa fa-trash"></i></a>`;
                     }
                 },
                 { 

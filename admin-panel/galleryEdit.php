@@ -330,25 +330,27 @@ require './shared/footer.php';
         $('#post-url').val(data.post_url);
         $('#image-name').val(JSON.stringify([data.featured_image_lg, data.featured_image_sm]));
         $('#image-pre').attr('src', data.featured_image_sm ? './..' + data.featured_image_sm : './../assets/images/temp/no-image.jpg');
-        $('#imageDesc').summernote({height: 155, focus: true});
+        $('#imageDesc').summernote({height: 200, focus: true});
         addImages.forEach((item, index) => {
             //addGalleryBlock();
             //console.log(item);
             if (index) {
                 addGalleryBlock();
                 $('#imageTitle-' + (index + 1)).val(item['imageTitle']);
-                $('#imageDesc-' + (index + 1)).val(item['imageDesc']);
+                //$('#imageDesc-' + (index + 1)).val(item['imageDesc']);
+                $('#imageDesc-' + (index + 1)).summernote('code', item['imageDesc']);
                 $('#image-name-' + (index + 1)).val(item['imageName']);
                 $('#image-pre-' + (index + 1)).attr('src', JSON.parse(item['imageName'])[1] ? './..' + JSON.parse(item['imageName'])[1]:'./../assets/images/temp/no-image.jpg');
-                $('#imageDesc-' + (index + 1)).summernote({height: 155, focus: true});
+                $('#imageDesc-' + (index + 1)).summernote({height: 200, focus: true});
                 $('#image-alt-' + (index + 1)).val(item['imageAlt']);
             } else {
                 // console.log(item);
                 $('#imageTitle-1').val(item['imageTitle']);
-                $('#imageDesc-1').val(item['imageDesc']);
+                //$('#imageDesc-1').val(item['imageDesc']);
+                $('#imageDesc-1').summernote('code', item['imageDesc']);
                 $('#image-name-1').val(item['imageName']);
                 $('#image-pre-1').attr('src', JSON.parse(item['imageName'])[1] ? './..' + JSON.parse(item['imageName'])[1]:'./../assets/images/temp/no-image.jpg');
-                $('#imageDesc-1').summernote({height: 155, focus: true});
+                $('#imageDesc-1').summernote({height: 200, focus: true});
                 $('#image-alt-1').val(item['imageAlt']);
             }
         });
@@ -407,7 +409,7 @@ require './shared/footer.php';
         var nextindex = Number(split_id[2]) + 1;
         $(".gallery-block:last").after(`<div class='row mt-4 gallery-block' id='gallery-block-${nextindex}'></div>`);
         $("#gallery-block-" + nextindex).append(htmlTemplate(nextindex));
-        $('#imageDesc-' + nextindex).summernote({height: 155, focus: true});
+        $('#imageDesc-' + nextindex).summernote({height: 200, focus: true});
         //alert(total_element);
     }
 

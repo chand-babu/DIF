@@ -24,14 +24,16 @@ function searchCall(val){
         data: { 'page': pageNo, query: query },
         success: function(data)
         {
-            if (JSON.parse(data)) {
-                JSON.parse(data).forEach((element) => {
-                    console.log(element);
+            $('#result-count').text(JSON.parse(data).count.dataCount);
+            console.log(JSON.parse(data).count.dataCount);
+            if (JSON.parse(data).data) {
+                JSON.parse(data).data.forEach((element) => {
+                    //console.log(element);
                     $('#search-add').append(content (element));       
                 });
                 $('#count').val(pageNo);
             }
-            console.log(data);
+            //console.log(data);
         },
         error: function(jqXHR, exception)
         {
@@ -41,7 +43,7 @@ function searchCall(val){
 }
 
 function content (data) {
-    console.log(data);
+    //console.log(data);
     var image = Object.hasOwnProperty(data, 'image_sm') ? './..' + data.image_sm :
             './..' + data.featured_image_sm;
     var string = JSON.parse(data.created).created_on.substring(0, 10);

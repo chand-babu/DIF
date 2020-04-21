@@ -1,9 +1,9 @@
 $(document).ready(function() {
     var store = localStorage.getItem('image-download') ?
     JSON.parse(localStorage.getItem('image-download')) : '';
-    var uri = location.href.split('/')[location.href.split('/').length - 2];
-    var uriCheck = location.href.split('/')[location.href.split('/').length - 1];
-    if (uri == 'image' && uriCheck == store.imageTitle) {
+    var uri = location.href.split('/')[location.href.split('/').length - 1];
+    //var uriCheck = location.href.split('/')[location.href.split('/').length - 1].replace('-', ' ');
+    if (uri == 'image') {
         if (store) {
             console.log(store);
             $('#image-title').text(store.imageTitle);
@@ -17,5 +17,5 @@ $(document).ready(function() {
     } else {
         //localStorage.removeItem('image-download');
     }
-    localStorage.removeItem('image-download');
+    //localStorage.removeItem('image-download');
 });

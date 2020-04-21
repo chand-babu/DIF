@@ -221,8 +221,8 @@ require './shared/footer.php';
             });
         });
 
-        $('#imageDesc').summernote({height: 155, focus: true});
-        $('#imageDesc-1').summernote({height: 155, focus: true});
+        $('#imageDesc').summernote({height: 200, focus: true});
+        $('#imageDesc-1').summernote({height: 200, focus: true});
         //$('#imageDesc').summernote()
         $('#title-err').css('display','none');
         $('#desc-err').css('display','none');
@@ -335,7 +335,7 @@ require './shared/footer.php';
         var nextindex = Number(split_id[2]) + 1;
         $(".gallery-block:last").after(`<div class='row mt-4 gallery-block' id='gallery-block-${nextindex}'></div>`);
         $("#gallery-block-" + nextindex).append(htmlTemplate(nextindex));
-        $('#imageDesc-' + nextindex).summernote({height: 155, focus: true});
+        $('#imageDesc-' + nextindex).summernote({height: 200, focus: true});
         //alert(total_element);
     }
 

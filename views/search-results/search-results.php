@@ -13,7 +13,7 @@
 
     <hgroup class="mb20">
 		<h1>Search Results</h1>
-		<h2 class="lead"><strong class="text-danger result">3</strong> results were found for the search for <strong class="text-danger">Lorem</strong></h2>								
+		<h2 class="lead"><strong id="result-count" class="text-danger result">0</strong> results were found for the search for <strong class="text-danger">Lorem</strong></h2>								
 	</hgroup>
 
 

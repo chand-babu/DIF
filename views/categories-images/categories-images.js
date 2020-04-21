@@ -23,6 +23,11 @@ function downloadPage (data) {
     if (!localStorage.getItem("image-download")){
         localStorage.setItem("image-download", JSON.stringify(data));
         //console.log(data);
+    } else {
+        localStorage.removeItem('image-download');
+        localStorage.setItem("image-download", JSON.stringify(data));
     }
-    location.href = './../image/' + data.imageTitle;
+    setTimeout(function(){
+        location.href = './../image';
+    },1000);
 }

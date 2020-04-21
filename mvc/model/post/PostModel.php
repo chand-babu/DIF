@@ -77,6 +77,39 @@ class PostModel extends DatabaseService{
             $execute = $this->connection->prepare($query);
             $execute->execute();
             $blogData = $execute->fetchAll(\PDO::FETCH_ASSOC);
+            
+            return array(
+                'result' => true,
+                'message' => 'DATA Listed',
+                'data' => $blogData,
+                'count' => $this->searchCountPostModel($input)['result'] ? $this->searchCountPostModel($input)['data']: '',
+                'dev' => ''
+            );
+        } catch (\PDOException $e) {
+            return array(
+                'result' => false,
+                'message' => 'Something went wrong',
+                'data' => [],
+                'dev' => $e->getMessage()
+            );
+        }
+    }
+
+    public function searchCountPostModel($input) {
+        $query = "SELECT COUNT(*) AS dataCount FROM (
+            SELECT c.name, g.title, g.cat_id, g.post_url, g.description, g.featured_image_sm, g.created
+            FROM gallery g INNER JOIN category c
+            ON c.cat_id = g.cat_id
+            WHERE g.post_url LIKE '%".$input."%' OR g.cat_id IN (SELECT cat_id FROM category
+            WHERE name LIKE '%".$input."%')
+            UNION
+            SELECT c.name, b.title, b.cat_id, b.post_url, b.description, b.image_sm, b.created FROM blog b INNER JOIN category c
+            WHERE b.post_url LIKE '%".$input."%' OR b.cat_id IN (SELECT cat_id FROM category
+            WHERE name LIKE '%".$input."%')) AS data_count;";
+        try {
+            $execute = $this->connection->prepare($query);
+            $execute->execute();
+            $blogData = $execute->fetch(\PDO::FETCH_ASSOC);
             return array(
                 'result' => true,
                 'message' => 'DATA Listed',

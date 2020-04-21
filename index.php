@@ -26,7 +26,7 @@ $router->get('/categories/{gal}', function($gal) {
     echo requireView('sub-categories/sub-categories.php');
 });
 
-$router->get('/image/{share}', function($share) {
+$router->get('/image', function() {
     echo requireView('image-share-download/image-share-download.php');
 });
 

@@ -35,7 +35,7 @@ if (!isset($_POST['image_index'])) {
         'title' => trim($_POST['title'],""),
         'description' => $_POST['imageDesc'],
         'image_alt' => $_POST['imageAlt'],
-        'post_url' => trim($_POST['post_url']),
+        'post_url' => trim($_POST['postUrl']),
         'featured_image_lg' => $feat_image[0],
         'featured_image_sm' => $feat_image[1],
         'gallery_images' => json_encode($allData),
