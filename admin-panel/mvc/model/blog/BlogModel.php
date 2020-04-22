@@ -10,8 +10,8 @@ class BlogModel extends DatabaseService{
     }
 
     public function addBlogModel($input) {
-        $query = "INSERT INTO blog(blg_id, cat_id, title, description, image_lg, image_sm, blg_status, created, content, image_alt, post_url)
-                    VALUES(:blg_id, :cat_id, :title, :description, :image_lg, :image_sm, :blg_status, :created, :content, :image_alt, :post_url)";
+        $query = "INSERT INTO blog(blg_id, cat_id, title, description, image_lg, image_sm, blg_status, created, content, image_alt, post_url, meta_tag, meta_desc)
+                    VALUES(:blg_id, :cat_id, :title, :description, :image_lg, :image_sm, :blg_status, :created, :content, :image_alt, :post_url, :meta_tag, :meta_desc)";
         try {
             $execute = $this->connection->prepare($query);
             $execute->execute($input);
@@ -30,7 +30,7 @@ class BlogModel extends DatabaseService{
     }
 
     public function listBlogModel() {
-        $query = 'SELECT blg_id, cat_id, title, description, image_lg, image_sm, blg_status, created, modified, content, image_alt, post_url
+        $query = 'SELECT blg_id, cat_id, title, description, image_lg, image_sm, blg_status, created, modified, content, image_alt, post_url, meta_tag, meta_desc
         FROM blog ORDER BY blid DESC';
         try {
             $execute = $this->connection->prepare($query);
@@ -53,7 +53,7 @@ class BlogModel extends DatabaseService{
     }
 
     public function getBlogModel($input) {
-        $query = 'SELECT blg_id, cat_id, title, description, image_lg, image_sm, blg_status, created, modified, content, image_alt, post_url
+        $query = 'SELECT blg_id, cat_id, title, description, image_lg, image_sm, blg_status, created, modified, content, image_alt, post_url, meta_tag, meta_desc
         FROM blog WHERE blg_id = :blg_id LIMIT 1';
         try {
             $execute = $this->connection->prepare($query);
@@ -76,7 +76,7 @@ class BlogModel extends DatabaseService{
     }
 
     public function editBlogModel($input) {
-        $query = "UPDATE blog SET title = :title, cat_id = :cat_id, description = :description, image_lg = :image_lg, image_sm = :image_sm, blg_status = :blg_status, modified = :modified, content = :content, image_alt = :image_alt, post_url = :post_url
+        $query = "UPDATE blog SET title = :title, cat_id = :cat_id, description = :description, image_lg = :image_lg, image_sm = :image_sm, blg_status = :blg_status, modified = :modified, content = :content, image_alt = :image_alt, post_url = :post_url, meta_tag = :meta_tag, meta_desc = :meta_desc
         WHERE blg_id = :blg_id";
         try {
             $execute = $this->connection->prepare($query);

@@ -137,7 +137,7 @@ require './shared/footer.php';
                     "data": "Action",
                     "render": function(data, type, row){
                         return `<a href="./galleryEdit.php?id=${row.gal_id}"><i class="fa fa-edit"></i></a> |
-                        <a href="javascript:void(0)" onclick='del(encodeURIComponent(${JSON.stringify(row)}))'><i class="fa fa-trash"></i></a>`;
+                        <a href="javascript:void(0)" onclick="del('${row.gal_id}')"><i class="fa fa-trash"></i></a>`;
                     }
                 },
                 { 
@@ -327,7 +327,7 @@ require './shared/footer.php';
 
     function del(data) {
         $("#confirmModal").modal();
-        $("#gal-model-id").val(data.gal_id);
+        $("#gal-model-id").val(data);
     }
 
     function modelMessageCall(title, data){

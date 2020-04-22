@@ -10,7 +10,7 @@ class PostModel extends DatabaseService{
     }
 
     public function getPostModel($input) {
-        $query = "SELECT gal_id, cat_id, title, description, gallery_images, gal_status, created, modified, featured_image_lg, featured_image_sm, trending_order, image_alt, post_url
+        $query = "SELECT gal_id, cat_id, title, description, gallery_images, gal_status, created, modified, featured_image_lg, featured_image_sm, trending_order, image_alt, post_url, meta_tag, meta_desc
         FROM gallery WHERE cat_id = (SELECT cat_id FROM `category` WHERE name = :name) AND post_url = :post_url LIMIT 1";
         try {
             $execute = $this->connection->prepare($query);
@@ -38,7 +38,7 @@ class PostModel extends DatabaseService{
     }
 
     public function checkBlogPostModel($input) {
-        $query = "SELECT blg_id, cat_id, title, description, image_lg, image_sm, blg_status, created, modified, image_alt, post_url, content
+        $query = "SELECT blg_id, cat_id, title, description, image_lg, image_sm, blg_status, created, modified, image_alt, post_url, content, meta_tag, meta_desc
         FROM blog WHERE cat_id = (SELECT cat_id FROM `category` WHERE name = :name) AND post_url = :post_url LIMIT 1";
         try {
             $execute = $this->connection->prepare($query);

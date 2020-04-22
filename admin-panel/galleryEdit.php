@@ -101,6 +101,17 @@ require './shared/header.php';
                                         placeholder="eg: happy-holi-festival-to-all">
                                         <div id="post-url-err" class="text-danger" style="display:none;">URL exist please try unique</div>
                                     </div>
+
+                                    <div class="col-4">
+                                        <label for="title">Meta tag</label>
+                                        <input type="text" id="meta-tag" name="metaTag" class="form-control" 
+                                        placeholder="Meta tag name">
+                                    </div>
+                                    <div class="col-8">
+                                        <label for="title">Meta descrition</label>
+                                        <input type="text" id="meta-desc" name="metaDesc" class="form-control" 
+                                        placeholder="Meta description">
+                                    </div>
                                     
                                 </div>
                                 <div id="image-block-set">
@@ -328,6 +339,8 @@ require './shared/footer.php';
         $('#imageDesc').val(data.description);
         $('#image-alt').val(data.image_alt);
         $('#post-url').val(data.post_url);
+        $('#meta-tag').val(data.meta_tag);
+        $('#meta-desc').val(data.meta_desc);
         $('#image-name').val(JSON.stringify([data.featured_image_lg, data.featured_image_sm]));
         $('#image-pre').attr('src', data.featured_image_sm ? './..' + data.featured_image_sm : './../assets/images/temp/no-image.jpg');
         $('#imageDesc').summernote({height: 200, focus: true});

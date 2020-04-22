@@ -15,7 +15,7 @@ if (!isset($_POST['image_index'])) {
     {   
         if ($key == 'category' || $key == 'title' || $key == 'imageDesc' ||
             $key == 'image-name' || $key == 'gal_id' || $key == 'gal_status'||
-            $key == 'imageAlt' || $key == 'postUrl') { 
+            $key == 'imageAlt' || $key == 'postUrl' || $key == 'metaTag' || $key == 'metaDesc') { 
         } else {
             $newKey = explode('-', $key);
             $arraySet[$newKey[0]] = $value;
@@ -36,6 +36,8 @@ if (!isset($_POST['image_index'])) {
         'description' => $_POST['imageDesc'],
         'image_alt' => $_POST['imageAlt'],
         'post_url' => trim($_POST['postUrl']),
+        'meta_tag' => $_POST['metaTag'],
+        'meta_desc' => $_POST['metaDesc'],
         'featured_image_lg' => $feat_image[0],
         'featured_image_sm' => $feat_image[1],
         'gallery_images' => json_encode($allData),

@@ -302,8 +302,12 @@ foreach ($popularLisiting as $key => $value) {
                     <?php
                         //print_r($categoryListing);
                         foreach ($categoryListing as $key => $value) {
+//comment review-issue
+                            echo '<li><a class="text-white" href="'.URL_BASE.'categories/'.str_replace(' ','-', strtolower($value['name'])).'" style="text-decoration:none;"><span>'.$value['name'].' ('.$value['gal_count'].')</span> <i class="fas fa-angle-double-right float-right"></i></a></li>';
+//comment
                             echo '<li><a class="text-white" href="'.URL_BASE.'categories/'.str_replace(' ','-', $value['name']).'" style="text-decoration:none;"><span>'.$value['name'].' ('.$value['gal_count'].')
                             </span> <i class="fas fa-angle-double-right float-right"></i></a></li>';
+//comment master
                         }
                     ?>
                 </ul>

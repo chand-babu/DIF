@@ -54,7 +54,7 @@ $categoryListing = $response['result'] ? $response['data'] : array();
                     //print_r($categoryListing);
                     foreach ($categoryListing as $key => $value) {
                         echo '<li>
-                                <a href="'.URL_BASE.'categories/'.str_replace(' ','-', $value['name']).'"><i class="fas fa-chevron-right"></i> '.$value['name'].'<span>('.$value['gal_count'].')</span></a>
+                                <a href="'.URL_BASE.'categories/'.str_replace(' ','-', strtolower($value['name'])).'"><i class="fas fa-chevron-right"></i> '.$value['name'].'<span>('.$value['gal_count'].')</span></a>
                             </li>';
                     }
                 ?>	

@@ -41,6 +41,10 @@
             </li>
 
             <li class="nav-item">
+                <a class="nav-link px-3" href="<?php echo URL_BASE . 'blog'; ?>">BLOG</a>
+            </li>
+
+            <li class="nav-item">
                 <a class="nav-link px-3" href="<?php echo URL_BASE . 'about'; ?>">ABOUT</a>
             </li>
 
