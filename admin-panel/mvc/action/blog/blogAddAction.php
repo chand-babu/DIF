@@ -22,6 +22,8 @@ if (!isset($_POST['blog_img'])) {
         'title' => trim($_POST['title'],""),
         'image_alt' => $_POST['image_alt'],
         'post_url' => trim($_POST['post_url']),
+        'meta_tag' => $_POST['metaTag'],
+        'meta_desc' => $_POST['metaDesc'],
         'description' => $_POST['description'],
         'content' => $_POST['content_description'],
         'image_lg' => $image_name[0],

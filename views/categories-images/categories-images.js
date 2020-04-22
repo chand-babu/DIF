@@ -18,6 +18,10 @@ overlay.addEventListener('click', close);
 
 
  */
+$(document).ready(function() {
+    $('head').append(`<meta name="description" content="${$('#meta-desc').val()}"></meta>
+    <meta name="keywords" content="${$('#meta-tag').val()}"></meta>`);
+});
 
 function downloadPage (data) {
     if (!localStorage.getItem("image-download")){

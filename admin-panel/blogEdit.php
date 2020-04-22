@@ -98,6 +98,16 @@ require './shared/header.php';
                                         placeholder="eg: happy-holi-festival-to-all">
                                         <div id="post-url-err" class="text-danger" style="display:none;">URL exist please try unique</div>
                                     </div>
+                                    <div class="col-4">
+                                        <label for="title">Meta tag</label>
+                                        <input type="text" id="meta-tag" name="metaTag" class="form-control" 
+                                        placeholder="Meta tag name">
+                                    </div>
+                                    <div class="col-8">
+                                        <label for="title">Meta descrition</label>
+                                        <input type="text" id="meta-desc" name="metaDesc" class="form-control" 
+                                        placeholder="Meta description">
+                                    </div>
                                     <div class="col-12 mt-3">
                                         <div class="form-group">
                                             <label for="desc">Content <span class="text-danger">*</span></label>
@@ -201,6 +211,8 @@ require './shared/footer.php';
                         $('#desc').val(getData.description);
                         $('#image-alt').val(getData.image_alt);
                         $('#post-url').val(getData.post_url);
+                        $('#meta-tag').val(getData.meta_tag);
+                        $('#meta-desc').val(getData.meta_desc);
                         //$('#content').val(getData.content);
                         $('#content').summernote('code', getData.content);
                         $('#image-name').val(JSON.stringify([getData.image_lg, getData.image_sm]));

@@ -19,6 +19,8 @@ $blogLisiting = $responseGallery['result'] ? $responseGallery : array();
 $blogLatestLisiting = $responseBlog['result'] ? $responseBlog['data'] : array();
 //echo '<pre>';print_r($blogLisiting);echo '</pre>';
 //echo $cat.$post;
+echo '<input type="hidden" id="meta-desc" value="'.$responseGallery['data']['meta_desc'].'"/>';
+echo '<input type="hidden" id="meta-tag" value="'.$responseGallery['data']['meta_tag'].'"/>';
 
 ?>
 
@@ -38,8 +40,6 @@ $blogLatestLisiting = $responseBlog['result'] ? $responseBlog['data'] : array();
                 <div class="row">
                     <?php 
                         
-                        //$image_array = array();
-                        // href="'.URL_BASE.'image/'. $value['imageTitle'].'"
                         $decodeData = json_decode($blogLisiting['data']['gallery_images'], true);
                         foreach ($decodeData as $key => $value) {
                             //echo htmlentities(json_encode($value));
@@ -48,14 +48,10 @@ $blogLatestLisiting = $responseBlog['result'] ? $responseBlog['data'] : array();
                                     <img src="./..'.json_decode($value['imageName'], true)[1].'" alt="'.$value['imageAlt'].'" width="100%">
                                     <h4 class="mt-2">'.$value['imageTitle'].'</h4>
                                     <p>'.$value['imageDesc'].'</p>
-                                    <a href="javascript:void(0)" onclick="downloadPage('.htmlentities(json_encode($value)).')">Read More</a>
+                                    <a href="javascript:void(0)" onclick="downloadPage('.htmlentities(json_encode($value)).')">Preview</a>
                                 </div>
                             </div>';
                         }
-                        //unset($_SESSION['name']);
-                        //$sessionStore = json_encode($image_array);
-                        //$_SESSION['name'] = $image_array;
-                        //print_r($_SESSION['name']);
                     ?>
                 </div>
             </div>
@@ -76,7 +72,7 @@ $blogLatestLisiting = $responseBlog['result'] ? $responseBlog['data'] : array();
                         //print_r($categoryListing);
                         foreach ($categoryListing as $key => $value) {
                             echo '<li>
-                                    <a href="'.URL_BASE.'categories/'.str_replace(' ','-', $value['name']).'"><i class="fas fa-chevron-right"></i> '.$value['name'].'<span>('.$value['gal_count'].')</span></a>
+                                    <a href="'.URL_BASE.'categories/'.str_replace(' ','-', strtolower($value['name'])).'"><i class="fas fa-chevron-right"></i> '.$value['name'].'<span>('.$value['gal_count'].')</span></a>
                                 </li>';
                         }
                     ?>	
@@ -232,7 +228,7 @@ $blogLatestLisiting = $responseBlog['result'] ? $responseBlog['data'] : array();
                     <?php 
                         foreach ($blogLatestLisiting as $key => $value) {
                             echo '
-                            <a class="text-white" href="'.URL_BASE.str_replace(' ','-',$value['name']).'/'.$value['post_url'].'">
+                            <a class="text-white" href="'.URL_BASE.str_replace(' ','-',strtolower($value['name'])).'/'.$value['post_url'].'">
                             <div class="row">
                                 <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                                     <img src="./..'.$value['image_sm'].'" alt="" class="img-thumbnail img-responsive">

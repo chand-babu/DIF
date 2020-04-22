@@ -92,6 +92,17 @@ require './shared/header.php';
                                         placeholder="eg: happy-holi-festival-to-all">
                                         <div id="post-url-err" class="text-danger" style="display:none;">URL exist please try unique</div>
                                     </div>
+
+                                    <div class="col-4">
+                                        <label for="title">Meta tag</label>
+                                        <input type="text" id="meta-tag" name="metaTag" class="form-control" 
+                                        placeholder="Meta tag name">
+                                    </div>
+                                    <div class="col-8">
+                                        <label for="title">Meta descrition</label>
+                                        <input type="text" id="meta-desc" name="metaDesc" class="form-control" 
+                                        placeholder="Meta description">
+                                    </div>
                                     <div class="col-12 mt-3">
                                         <div class="form-group">
                                             <label for="desc">Content <span class="text-danger">*</span></label>
