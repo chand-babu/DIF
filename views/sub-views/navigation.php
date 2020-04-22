@@ -19,9 +19,12 @@
         <!-- <div>DAILY IMAGE FUNDA</div> -->
         <img src="<?php echo URL_BASE . 'assets/images/logo/1.png'; ?>" alt="logo" width="50px">
     </div>
-    <button type="button" class="navbar-toggler bg-dark" data-toggle="collapse" data-target="#nav">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+    
+    <div class="responsive-menu-bar">
+        <button type="button" class="navbar-toggler bg-dark" data-toggle="collapse" data-target="#nav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
 
     <div class="collapse navbar-collapse justify-content-between text-right" id="nav">
         <ul class="navbar-nav nav-container">

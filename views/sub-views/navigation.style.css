@@ -31,3 +31,9 @@ nav {
 .nav-container li:hover {
   font-weight: bold;
 }
+
+.responsive-menu-bar {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+}

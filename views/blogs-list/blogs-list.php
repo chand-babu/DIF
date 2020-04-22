@@ -26,20 +26,24 @@ $blogLatestListing = $responseLatest['result'] ? $responseLatest['data'] : array
       
                 <?php 
                     foreach ($blogLisiting as $key => $value) {
-                        echo '<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        echo '<a class="text-decoration-none" href="'.URL_BASE.str_replace(' ','-',$value['name']).'/'.$value['post_url'].'">
+                        
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                         <div class="panel panel-default">
                             <div class="panel-body blog-border p-3 mb-4">
                                 <img src="'.URL_BASE.$value['image_sm'].'"
                                     alt="" class="img-thumbnail img-responsive w-100">
                                 <p class="text-muted">By <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                                     '.date('d/M/Y', strtotime(json_decode($value['created'], true)['created_on'])).'</p>
-                                <h3>'.$value['title'].'</h3>
-                                <p>'.$value['description'].'</p>
+                                <h3 class="blog-list-h3 multi-line-truncate">'.$value['title'].'</h3>
+                                <p class="blog-list-p multi-line-truncate">'.$value['description'].'</p>
                                 <a href="'.URL_BASE.str_replace(' ','-',$value['name']).'/'.$value['post_url'].'"
                                 class="btn btn-default text-white">Read more...</a>
                             </div>
                         </div>
-                    </div>';
+                    </div>
+                        
+                        </a>';
                     }
                 ?>
             </div>
