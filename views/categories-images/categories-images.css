@@ -5,7 +5,7 @@
 }
 
 #blog h2 {
-    color: #4C4C4C;
+    color: white;
     word-spacing: 5px;
     font-size: 30px;
     font-weight: 700;
@@ -44,7 +44,7 @@
 .sidebar .widget .widget-title h3 {
     font-size: 20px;
     font-weight: 500;
-    color: #2d2d2d;
+    /* color: #2d2d2d; */
     padding-bottom: 15px;
     margin-bottom: 22px;
     border-bottom: 1px solid #e5e5e5;
@@ -59,7 +59,7 @@
     font-weight: 400;
 }
 .widget-categories > ul.cat-list > li > a {
-    color: #484848;
+    color: white;
     position: relative;
     font-size: 12px;
     text-decoration: none;
@@ -134,4 +134,12 @@
 	padding: 0 10px;
 	width: 50%; 
 	margin-bottom: 25px;
+}
+
+.blog h4 {
+    height: 50px;
+}
+
+.blogPara {
+    height: 60px;
 }

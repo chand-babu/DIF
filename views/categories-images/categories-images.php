@@ -43,14 +43,27 @@ echo '<input type="hidden" id="meta-tag" value="'.$responseGallery['data']['meta
                         $decodeData = json_decode($blogLisiting['data']['gallery_images'], true);
                         foreach ($decodeData as $key => $value) {
                             //echo htmlentities(json_encode($value));
+//comment review-issue
                             echo '<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 mb-3" data-aos="fade-right">
                                 <div class="blog column text-center">
                                     <img src="./..'.json_decode($value['imageName'], true)[1].'" alt="'.$value['imageAlt'].'" width="100%">
                                     <h4 class="mt-2">'.$value['imageTitle'].'</h4>
                                     <p>'.$value['imageDesc'].'</p>
                                     <a href="javascript:void(0)" onclick="downloadPage('.htmlentities(json_encode($value)).')">Preview</a>
+//comment===
+                            echo '<a href="javascript:void(0)" onclick="downloadPage('.htmlentities(json_encode($value)).')">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 mb-3" data-aos="fade-right">
+                            <div class="blog column text-center">
+                                <img src="./..'.json_decode($value['imageName'], true)[1].'" alt="'.$value['imageAlt'].'" width="100%">
+                                <h4 class="mt-2 multi-line-truncate text-white">'.$value['imageTitle'].'</h4>
+                                <div class="multi-line-truncate blogPara">
+                                    <p class="multi-line-truncate text-white">'.$value['imageDesc'].'</p>
+//comment master
                                 </div>
-                            </div>';
+                                <a href="javascript:void(0)" onclick="downloadPage('.htmlentities(json_encode($value)).')">Read More</a>
+                            </div>
+                        </div>
+                            </a>';
                         }
                     ?>
                 </div>
@@ -150,7 +163,7 @@ echo '<input type="hidden" id="meta-tag" value="'.$responseGallery['data']['meta
                         </div>
 
                         <!-- Comments Form -->
-                        <div class="card my-4">
+                        <div class="card1 my-4">
                             <h5 class="card-header">Leave a Comment:</h5>
                             <div class="card-body">
                                 <form>
