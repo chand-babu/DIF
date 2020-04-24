@@ -21,4 +21,8 @@ class BlogController {
     public function letestBlogController(){
         return $this->blog->letestBlogModel();
     }
+
+    public function commentBlogController($data){
+        return $this->blog->commentBlogModel($data);
+    }
 }

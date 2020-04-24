@@ -34,11 +34,25 @@ class ComposerStaticInit0613e3eb2c760829f7ef7de3af80cf1f
     );
 
     public static $prefixesPsr0 = array (
+        'S' => 
+        array (
+            'SocialShare' => 
+            array (
+                0 => __DIR__ . '/..' . '/dunglas/php-socialshare/src',
+            ),
+        ),
         'I' => 
         array (
             'ImageOptimizer' => 
             array (
                 0 => __DIR__ . '/..' . '/ps/image-optimizer/src',
+            ),
+        ),
+        'D' => 
+        array (
+            'Doctrine\\Common\\Cache\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/doctrine/cache/lib',
             ),
         ),
         'B' => 

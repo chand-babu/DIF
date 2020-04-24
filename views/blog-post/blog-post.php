@@ -1,5 +1,5 @@
 <?php
-require 'mvc/autoloader.php';
+//require 'mvc/autoloader.php';
 
 $blog = new \controller\post\PostController();
 

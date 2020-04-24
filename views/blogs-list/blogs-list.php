@@ -1,5 +1,5 @@
 <?php
-require 'mvc/autoloader.php';
+//require 'mvc/autoloader.php';
 
 $blog = new \controller\blog\BlogController();
 
@@ -26,7 +26,7 @@ $blogLatestListing = $responseLatest['result'] ? $responseLatest['data'] : array
       
                 <?php 
                     foreach ($blogLisiting as $key => $value) {
-                        echo '<a class="text-decoration-none" href="'.URL_BASE.str_replace(' ','-',$value['name']).'/'.$value['post_url'].'">
+                        echo '<a class="text-decoration-none" href="'.URL_BASE.$value['post_url'].'">
                         
                         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                         <div class="panel panel-default">
@@ -35,9 +35,9 @@ $blogLatestListing = $responseLatest['result'] ? $responseLatest['data'] : array
                                     alt="" class="img-thumbnail img-responsive w-100">
                                 <p class="text-muted">By <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                                     '.date('d/M/Y', strtotime(json_decode($value['created'], true)['created_on'])).'</p>
-                                <h3 class="blog-list-h3 multi-line-truncate">'.$value['title'].'</h3>
-                                <p class="blog-list-p multi-line-truncate">'.$value['description'].'</p>
-                                <a href="'.URL_BASE.str_replace(' ','-',$value['name']).'/'.$value['post_url'].'"
+                                <h3 class="blog-list-h3 multi-line-truncate" title="'.$value['title'].'">'.$value['title'].'</h3>
+                                <p class="blog-list-p multi-line-truncate" title="'.$value['description'].'">'.$value['description'].'</p>
+                                <a href="'.URL_BASE.$value['post_url'].'"
                                 class="btn btn-default text-white">Read more...</a>
                             </div>
                         </div>
@@ -73,7 +73,7 @@ $blogLatestListing = $responseLatest['result'] ? $responseLatest['data'] : array
                     <?php 
                         foreach ($blogLatestListing as $key => $value) {
                             echo '
-                            <a class="text-white" href="'.URL_BASE.str_replace(' ','-',$value['name']).'/'.$value['post_url'].'">
+                            <a class="text-white" href="'.URL_BASE.$value['post_url'].'">
                             <div class="row">
                                 <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                                     <img src="'.URL_BASE.$value['image_sm'].'" alt="" class="img-thumbnail img-responsive w-100">
