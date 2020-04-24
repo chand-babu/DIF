@@ -143,3 +143,7 @@
 .blogPara {
     height: 60px;
 }
+
+.content-color-ch > * {
+    color: white !important;
+}

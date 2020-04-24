@@ -1,5 +1,5 @@
 <?php
-require 'mvc/autoloader.php';
+//require 'mvc/autoloader.php';
 
 $blog = new \controller\post\PostController();
 $category = new \controller\category\CategoryController();
@@ -13,7 +13,7 @@ $categoryListing = $cat_response['result'] ? $cat_response['data'] : array();
 $uriArray = explode('/', $_SERVER['REQUEST_URI']);
 $post = $uriArray[count($uriArray) - 1];
 $cat = str_replace('-', ' ', $uriArray[count($uriArray) - 2]);
-$responseGallery = $blog->getPostController(array('name' => $cat, 'post_url' => $post));
+$responseGallery = $blog->getPostController(array('post_url' => $post));
 
 $blogLisiting = $responseGallery['result'] ? $responseGallery : array();
 $blogLatestLisiting = $responseBlog['result'] ? $responseBlog['data'] : array();
@@ -42,27 +42,18 @@ echo '<input type="hidden" id="meta-tag" value="'.$responseGallery['data']['meta
                         
                         $decodeData = json_decode($blogLisiting['data']['gallery_images'], true);
                         foreach ($decodeData as $key => $value) {
-                            //echo htmlentities(json_encode($value));
-//comment review-issue
-                            echo '<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 mb-3" data-aos="fade-right">
-                                <div class="blog column text-center">
-                                    <img src="./..'.json_decode($value['imageName'], true)[1].'" alt="'.$value['imageAlt'].'" width="100%">
-                                    <h4 class="mt-2">'.$value['imageTitle'].'</h4>
-                                    <p>'.$value['imageDesc'].'</p>
-                                    <a href="javascript:void(0)" onclick="downloadPage('.htmlentities(json_encode($value)).')">Preview</a>
-//comment===
-                            echo '<a href="javascript:void(0)" onclick="downloadPage('.htmlentities(json_encode($value)).')">
+                            echo '<a href="./image/'.str_replace(" ", "-", strtolower($value['imageTitle'])).'">
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 mb-3" data-aos="fade-right">
-                            <div class="blog column text-center">
-                                <img src="./..'.json_decode($value['imageName'], true)[1].'" alt="'.$value['imageAlt'].'" width="100%">
-                                <h4 class="mt-2 multi-line-truncate text-white">'.$value['imageTitle'].'</h4>
-                                <div class="multi-line-truncate blogPara">
-                                    <p class="multi-line-truncate text-white">'.$value['imageDesc'].'</p>
-//comment master
+                                <div class="blog column text-center">
+                                    <img src=".'.json_decode($value['imageName'], true)[1].'" alt="'.$value['imageAlt'].'" width="100%">
+                                    <h4 class="mt-2 multi-line-truncate text-white">'.$value['imageTitle'].'</h4>
+                                    <div class="multi-line-truncate blogPara">
+                                        <p class="multi-line-truncate text-white">'.$value['imageDesc'].'</p>
+
+                                    </div>
+                                    <a href="../image/'.str_replace(" ", "-", strtolower($value['imageTitle'])).'">Preview</a>
                                 </div>
-                                <a href="javascript:void(0)" onclick="downloadPage('.htmlentities(json_encode($value)).')">Read More</a>
                             </div>
-                        </div>
                             </a>';
                         }
                     ?>
@@ -128,7 +119,7 @@ echo '<input type="hidden" id="meta-tag" value="'.$responseGallery['data']['meta
                         <div class="post-title">
                             <h1><?php echo $blogLisiting['data']['title']; ?></h1>
                         </div>
-                        <img class="w-100" src="./..<?php echo $blogLisiting['data']['image_lg']; ?>" alt="Blog Banner">
+                        <img class="w-100" src=".<?php echo $blogLisiting['data']['image_lg']; ?>" alt="Blog Banner">
                         <!-- Post Headline End -->
 
                         <!-- Post Detail Start -->
@@ -140,8 +131,8 @@ echo '<input type="hidden" id="meta-tag" value="'.$responseGallery['data']['meta
 
                         <p><?php echo $blogLisiting['data']['description']; ?></p>
 
-
-                        <div><?php echo $blogLisiting['data']['content']; ?></div>
+                        
+                        <div class="content-color-ch"><?php echo $blogLisiting['data']['content']; ?></div>
                         <!-- Post List Style End -->
 
 
@@ -154,26 +145,30 @@ echo '<input type="hidden" id="meta-tag" value="'.$responseGallery['data']['meta
                                 <img src="images/blog/author.png" class="img-responsive" alt="">
                             </div>
 
-                            <div class="c-padding">
+                            <!-- <div class="c-padding">
                                 <h3>Article By <a href="#" target="_blank" data-toggle="tooltip" data-placement="top" title="Visit Alex Website">Alex Parker</a></h3>
                                 <p>You can use about author box when someone guest post on your blog, Lorem ipsum
                                     consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
                                     dolore magna ad minim veniam.</p>
-                            </div>
+                            </div> -->
                         </div>
 
                         <!-- Comments Form -->
                         <div class="card1 my-4">
                             <h5 class="card-header">Leave a Comment:</h5>
                             <div class="card-body">
-                                <form>
+                                <form id="comment-form">
                                     <div class="form-group">
+                                        <input id="blog-id" type="hidden" name="blog_id"
+                                        value="<?php echo $blogLisiting['data']['blg_id']; ?>">
                                         <label>Name</label>
-                                        <input type="text" class="form-control">
+                                        <input id="comment-name" name="comment_name" type="text" class="form-control">
+                                        <div id="name-err" class="text-danger" style="display: none">Required</div>
                                     </div>
                                     <div class="form-group">
                                         <label>Comment</label>
-                                        <textarea class="form-control" rows="3"></textarea>
+                                        <textarea id="comment-msg" name="comment_msg" class="form-control" rows="3"></textarea>
+                                        <div id="msg-err" class="text-danger" style="display: none">Required</div>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </form>
@@ -186,6 +181,25 @@ echo '<input type="hidden" id="meta-tag" value="'.$responseGallery['data']['meta
                             <div class="media-body">
                                 <h5 class="mt-0">Commenter Name</h5>
                                 Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                                <div class="text-right" style="cursor: pointer"  onclick="myFunction()">Reply</div>
+                                
+                                <div id="blog-reply" class="card1 my-4 d-none">
+                                    <h5 class="card-header">Reply on Comment:</h5>
+                                    <div class="card-body">
+                                        <form id="reply-form">
+                                            <div class="form-group">
+                                                <label>Name</label>
+                                                <input type="text" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Comment</label>
+                                                <textarea class="form-control" rows="3"></textarea>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </form>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
 
@@ -241,10 +255,10 @@ echo '<input type="hidden" id="meta-tag" value="'.$responseGallery['data']['meta
                     <?php 
                         foreach ($blogLatestLisiting as $key => $value) {
                             echo '
-                            <a class="text-white" href="'.URL_BASE.str_replace(' ','-',strtolower($value['name'])).'/'.$value['post_url'].'">
+                            <a class="text-white" href="'.URL_BASE.$value['post_url'].'">
                             <div class="row">
                                 <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                    <img src="./..'.$value['image_sm'].'" alt="" class="img-thumbnail img-responsive">
+                                    <img src=".'.$value['image_sm'].'" alt="" class="img-thumbnail img-responsive">
                                 </div>
                                 <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
                                     <h5>'.$value['title'].'</h5>

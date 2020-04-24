@@ -1,5 +1,5 @@
 <?php
-require 'mvc/autoloader.php';
+//require 'mvc/autoloader.php';
 $category = new \controller\category\CategoryController();
 $response = $category->listCategoryController();
 $categoryListing = $response['result'] ? $response['data'] : array();
@@ -20,7 +20,7 @@ $categoryListing = $response['result'] ? $response['data'] : array();
                 foreach ($categoryListing as $key => $value) {
                     $date = date('d/M/Y', strtotime(json_decode($value['created'], true)['created_on']));
                     echo '<div class="card-grid-space col-md-6 col-sm-6 col-12 col-lg-4 mb-4">
-                        <a class="card d-flex align-items-center justify-content-center" href="./categories/'.str_replace(' ','-', $value['name']).'"
+                        <a class="card d-flex align-items-center justify-content-center" href="./categories/'.str_replace(' ','-', strtolower($value['name'])).'"
                    
                             style="--bg-img: url(../../' . $value['image_sm'] . '">
                             <div>

@@ -17,5 +17,39 @@ $(document).ready(function() {
     } else {
         //localStorage.removeItem('image-download');
     }
-    //localStorage.removeItem('image-download');
+
+    $.ajax({
+        type: "GET",
+        url: 'https://graph.facebook.com',
+        dataType: "json",
+        data: {
+                id: location.href,
+                scrape: true
+            },
+        success: function(data) {
+        console.log(data);
+        },
+        error: function(x, s, e) {
+        console.log('Something went wrong. Handle errors here...', e);
+        },
+        statusCode: {
+        404: function() {
+            console.log('data');
+        }
+        }
+    });
+
+    // var twitterShare = document.querySelector('.facebook-share');
+
+    // twitterShare.onclick = function(e) {
+    // e.preventDefault();
+    // var twitterWindow = window.open('https://twitter.com/share?url=' + document.URL, 'twitter-popup', 'height=350,width=600');
+    // if(twitterWindow.focus) { twitterWindow.focus(); }
+    //     return false;
+    // }  
 });
+
+function clickShare() {
+    document.getElementsByClassName('fb-share-button').click();
+}
+

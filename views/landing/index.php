@@ -1,5 +1,5 @@
 <?php
-require 'mvc/autoloader.php';
+//require 'mvc/autoloader.php';
 $category = new \controller\category\CategoryController();
 $banner = new \controller\banner\BannerController();
 $gallery = new \controller\gallery\GalleryController();
@@ -63,7 +63,9 @@ foreach ($popularLisiting as $key => $value) {
                                             </p>
                                         </div>
                                         <div class="w-25">
-                                            <button class="text-white n-button mr-3">View More <i class="fas fa-angle-double-right"></i></button>
+                                            <a target="_blank" href="'.$value['url_redirect'].'">
+                                                <button class="text-white n-button mr-3">View More <i class="fas fa-angle-double-right"></i></button>
+                                            </a> 
                                         </div>
                                     </div>
                                 </div>
@@ -97,40 +99,6 @@ foreach ($popularLisiting as $key => $value) {
         </div>
     </div>
 
-    <div class="row d-none">
-        <div class="col-8 pr-0">
-            <div class="main-banner">
-                <div class="img-container">
-                    <img src="./assets/images/temp/banner1.jpg" alt="Banner One" />
-                </div>
-                <div class="img-container">
-                    <img src="./assets/images/temp/banner2.jpg" alt="Banner Two" />
-                </div>
-                <div class="img-container">
-                    <img src="./assets/images/temp/banner3.jpg" alt="Banner Three" />
-                </div>
-            </div>
-        </div>
-        <div class="col-4 pl-0">
-            <div class="row">
-                <div class="col-12">
-                    <div class="main-banner half-height">
-                        <div class="img-container half-height">
-                            <img src="./assets/images/temp/banner3.jpg" alt="Banner Three" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="main-banner half-height">
-                        <div class="img-container half-height">
-                            <img src="./assets/images/temp/banner2.jpg" alt="Banner Two" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="row mt-4">
         <div class="col-12 col-lg-9 ">
             <div class="container">
@@ -148,7 +116,7 @@ foreach ($popularLisiting as $key => $value) {
                                                 <img src=".'.$value['image_sm'].'" alt="Banner One" />
                                             </div>
                                             <div class="w-100 h-100 image-name">
-                                                <div class="text-overflow">'.$value['name'].'</div>
+                                                <div class="text-overflow" title="'.$value['name'].'">'.$value['name'].'</div>
                                             </div>
                                         </div>
                                     </div>
@@ -165,13 +133,13 @@ foreach ($popularLisiting as $key => $value) {
                         <?php
                             foreach ($galleryLisiting as $key => $value) {
                                 echo '
-                                <a class="text-decoration-none" href="./'.str_replace(' ', '-', $value['name']).'/'.$value['post_url'].'"><div class="img-container-trending">
+                                <a class="text-decoration-none" href="./'.$value['post_url'].'"><div class="img-container-trending">
                                     <div class="position-relative">
                                         <div>
                                             <img src=".'.$value['featured_image_sm'].'" alt="Banner One" />
                                         </div>
                                         <div class="w-100 h-100 image-name">
-                                            <div class="text-overflow">'.$value['title'].'</div>
+                                            <div class="text-overflow" title="'.$value['title'].'">'.$value['title'].'</div>
                                         </div>
                                     </div>
                                 </div> </a>';
@@ -209,48 +177,6 @@ foreach ($popularLisiting as $key => $value) {
                     </div>
                 </div>
 
-                <!-- Blog -->
-                <div class="row d-none">
-                    <div class="col-12 mt-4 mb-2 text-uppercase text-center">
-                        <h4>Latest Blogs</h4>
-                        <div class="row mt-3">
-                            <div class="col-md-4 col-12">
-                                <div class="position-relative">
-                                    <div>
-                                        <img class="w-100 h-100" src="./assets/images/temp/banner1.jpg" alt="Banner One" height="300px" />
-                                    </div>
-                                    <div class="w-100 h-100 image-name">
-                                        <div>Name of the Blog</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-12">
-                                <div class="position-relative">
-                                    <div>
-                                        <img class="w-100 h-100" src="./assets/images/temp/banner1.jpg" alt="Banner One" />
-                                    </div>
-                                    <div class="w-100 h-100 image-name">
-                                        <div>Name of the Blog</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-12">
-                                <div class="position-relative">
-                                    <div>
-                                        <img class="w-100 h-100" src="./assets/images/temp/banner1.jpg" alt="Banner One" />
-                                    </div>
-                                    <div class="w-100 h-100 image-name">
-                                        <div>Name of the Blog</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 text-right my-3">
-                                <button class="n-button text-white">View More</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <div class="row text-center">
                     <div class="col-12 my-4">
                         <h1 class="text-center">Latest Blogs</h1>
@@ -260,7 +186,7 @@ foreach ($popularLisiting as $key => $value) {
                             $postDate = json_decode($value['created'], true);
                             //print_r($postDate);
                             echo '
-                            <a class="text-decoration-none" href="'.URL_BASE.str_replace(' ','-',$value['name']).'/'.$value['post_url'].'">
+                            <a class="text-decoration-none" href="'.URL_BASE.$value['post_url'].'">
                             
                             <div class="col-sm-6 col-md-4">
                             <div class="blog-box">
@@ -268,8 +194,8 @@ foreach ($popularLisiting as $key => $value) {
                                     <img class="w-100" src=".'.$value['image_sm'].'" class="img-responsive" alt="'.$value['image_alt'].'">
                                 </div>
                                 <div class="blog-box-content">
-                                    <h4 class="mt-2 multi-line-truncate"><a href="'.URL_BASE.str_replace(' ','-',$value['name']).'/'.$value['post_url'].'">'.$value['title'].'</a></h4>
-                                    <p class="multi-line-truncate">'.$value['description'].'</p>
+                                    <h4 class="mt-2 multi-line-truncate" title="'.$value['title'].'"><a href="'.URL_BASE.$value['post_url'].'">'.$value['title'].'</a></h4>
+                                    <p class="multi-line-truncate" title="'.$value['description'].'">'.$value['description'].'</p>
                                     <div class="row mb-2 border-bottom pb-2">
                                         <div class="col-6 text-left">
                                             <i class="fab fa-facebook-f"></i>
@@ -283,7 +209,7 @@ foreach ($popularLisiting as $key => $value) {
                                             </div>
                                         </div>
                                     </div>
-                                    <a href="'.URL_BASE.str_replace(' ','-',$value['name']).'/'.$value['post_url'].'" class="btn btn-default site-btn text-white text-decoration-none">Read More</a>
+                                    <a href="'.URL_BASE.$value['post_url'].'" class="btn btn-default site-btn text-white text-decoration-none">Read More</a>
                                 </div>
                             </div>
                         </div> 
@@ -302,12 +228,16 @@ foreach ($popularLisiting as $key => $value) {
                     <?php
                         //print_r($categoryListing);
                         foreach ($categoryListing as $key => $value) {
-//comment review-issue
-                            echo '<li><a class="text-white" href="'.URL_BASE.'categories/'.str_replace(' ','-', strtolower($value['name'])).'" style="text-decoration:none;"><span>'.$value['name'].' ('.$value['gal_count'].')</span> <i class="fas fa-angle-double-right float-right"></i></a></li>';
-//comment
-                            echo '<li><a class="text-white" href="'.URL_BASE.'categories/'.str_replace(' ','-', $value['name']).'" style="text-decoration:none;"><span>'.$value['name'].' ('.$value['gal_count'].')
-                            </span> <i class="fas fa-angle-double-right float-right"></i></a></li>';
-//comment master
+
+                            echo '<li><a class="text-white" href="'.URL_BASE.'categories/'.str_replace(' ','-', strtolower($value['name'])).'" style="text-decoration:none;">
+                                <span>'.$value['name'].' ('.$value['gal_count'].')</span>
+                                    <i class="fas fa-angle-double-right float-right"></i></a>
+                                </li>';
+
+                            // echo '<li><a class="text-white" href="'.URL_BASE.'categories/'.str_replace(' ','-', $value['name']).'" style="text-decoration:none;">
+                            //     <span>'.$value['name'].' ('.$value['gal_count'].')</span>
+                            //         <i class="fas fa-angle-double-right float-right"></i></a>
+                            //     </li>';
                         }
                     ?>
                 </ul>

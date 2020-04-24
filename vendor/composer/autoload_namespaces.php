@@ -6,6 +6,8 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'SocialShare' => array($vendorDir . '/dunglas/php-socialshare/src'),
     'ImageOptimizer' => array($vendorDir . '/ps/image-optimizer/src'),
+    'Doctrine\\Common\\Cache\\' => array($vendorDir . '/doctrine/cache/lib'),
     'Bramus' => array($vendorDir . '/bramus/router/src'),
 );

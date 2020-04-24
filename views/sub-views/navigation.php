@@ -1,18 +1,3 @@
-<nav class="navigation" style="display: none !important">
-    <div class="logo">
-        <div>DAILY IMAGE FUNDA</div>
-    </div>
-    <ul>
-        <li>Home</li>
-        <li>Categories</li>
-        <li>Upcoming Events</li>
-        <li>
-            <div class="n-button">
-                <span>Subscribe</span>
-            </div>
-        </li>
-    </ul>
-</nav>
 
 <nav class="navigation navbar navbar-dark navbar-expand-md">
     <div class="logo ml-4">

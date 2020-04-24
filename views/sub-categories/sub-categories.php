@@ -1,5 +1,5 @@
 <?php
-require 'mvc/autoloader.php';
+//require 'mvc/autoloader.php';
 
 $uriArray = explode('/', $_SERVER['REQUEST_URI']);
 $post = $uriArray[count($uriArray) - 1];
@@ -95,7 +95,7 @@ if (empty($galleryLisiting)){
                         <div class="col-12 col-sm-6 col-md-6 col-lg-4 mb-3">
                             <div class="position-relative w-100">
                                 <div>
-                                    <a href="'.URL_BASE.str_replace(' ', '-', strtolower($value['name'])).'/'.$value['post_url'].'">
+                                    <a href="'.URL_BASE.$value['post_url'].'">
                                         <img class="w-100" src="'.URL_BASE.$value['featured_image_sm'].'" height="216px" />
                                     </a>
                                 </div>
@@ -121,7 +121,7 @@ if (empty($galleryLisiting)){
                             //print_r($value);
                             
                             echo '
-                            <a href="'.URL_BASE.str_replace(' ','-',strtolower($value['name'])).'/'.$value['post_url'].'">
+                            <a href="'.URL_BASE.$value['post_url'].'">
                             <div class="col-12 mb-3">
                                 <div class="shadow w-100">
                                     <img class="w-100" src="'.URL_BASE.$value['image_sm'].'" alt="blog image" />

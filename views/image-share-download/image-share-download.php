@@ -1,36 +1,75 @@
 <?php
-require 'mvc/autoloader.php';
+// require 'mvc/autoloader.php';
+$uriArray = explode('/', $_SERVER['REQUEST_URI']);
+$post = str_replace('-', ' ', $uriArray[count($uriArray) - 1]);
+//echo $_SERVER['REQUEST_URI'];
 $category = new \controller\category\CategoryController();
-$response = $category->listCategoryController();
-$categoryListing = $response['result'] ? $response['data'] : array();
+$gallery = new \model\gallery\GalleryModel();
 
-// $uriArray = explode('/', $_SERVER['REQUEST_URI']);
-// $post = str_replace('-', ' ', $uriArray[count($uriArray) - 1]);
+$response = $category->listCategoryController();
+$responseGallery = $gallery->getGalleryImageModel(strtok($post, '?'));
+
+$categoryListing = $response['result'] ? $response['data'] : array();
+$galleryListing = $responseGallery['result'] ? $responseGallery['data'] : array();
+
+
 //$image_values = $_SESSION['image'][$post];
-// echo '<pre>';print_r($_SESSION);echo '</pre>';
+//echo '<pre>';print_r($galleryListing);echo '</pre>';
+
+$imgSrc = 'http://version2.dailyimagefunda.com'.json_decode($galleryListing[0]['imageName'], true)[1];
+//echo $imgSrc;
+$imgAlt = $galleryListing[0]['imageAlt'];
+$imgTitle = $galleryListing[0]['imageTitle'];
+$imgDesc = $galleryListing[0]['imageDesc'];
+
 ?>
 
+<script>
+(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+</script>
+<!-- <span class="facebook-share" data-js="facebook-share">Share on Facebook</span> -->
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-9 mt-5">
             <div class="blog column text-center">
-                <img id="image-view" src="" alt="" width="100%">
-                <h4 id="image-title" class="mt-2"></h4>
-                <p id="image-desc"></p>
+                <img id="image-view" src="<?php echo $imgSrc; ?>"
+                alt="<?php echo $imgAlt; ?>" width="100%">
+                <h4 id="image-title" class="mt-2"><?php echo $imgTitle; ?></h4>
+                <p id="image-desc"><?php echo $imgDesc; ?></p>
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
                         <div class="header_links">
                              <ul>
-                                 <li><a target="_blank" href="https://www.facebook.com/dailyimagefunda/"> <i class="fab fa-facebook-f"></i> </a></li>
-                                 <li><a target="_blank" class="twiter" href="https://twitter.com/home?lang=en"> <i class="fab fa-twitter"></i> </a></li>
-                                 <li><a target="_blank" class="insta" href="https://www.linkedin.com/in/daily-image-0b144719a/"> <i class="fab fa-linkedin"></i> </a></li>
-                                 <li><a target="_blank" class="insta" href="https://in.pinterest.com/dailyimage/"> <i class="fab fa-pinterest"></i> </a></li>
-                                 <li><a target="_blank" class="insta" href="https://www.instagram.com/daily_image_funda/"> <i class="fab fa-instagram"></i> </a></li>
+                                 <li>
+                                     <a target="_blank" 
+                                    href="https://www.facebook.com/sharer/sharer.php?u=http://version2.dailyimagefunda.com<?php echo $_SERVER['REQUEST_URI'];?>"> <i class="fab fa-facebook-f"></i>
+                                    <!-- <div class="fb-share-button" style="opacity:0" 
+                                        data-href="">
+                                    </div> -->
+                                    </a>
+                                </li>
+                                 <li><a target="_blank" class="twiter" 
+                                 href="https://twitter.com/share?url=http://version2.dailyimagefunda.com<?php echo $_SERVER['REQUEST_URI'];?>&text="<?php echo $imgTitle; ?>>
+                                    <i class="fab fa-twitter"></i> </a></li>
+                                 <li><a target="_blank" class="insta" 
+                                 href="https://www.linkedin.com/sharing/share-offsite/?url=http://version2.dailyimagefunda.com<?php echo $_SERVER['REQUEST_URI'];?>">
+                                    <i class="fab fa-linkedin"></i> </a></li>
+                                 <li><a target="_blank" class="insta" 
+                                 href="http://pinterest.com/pin/create/link/?url=http://version2.dailyimagefunda.com<?php echo $_SERVER['REQUEST_URI'];?>"> <i class="fab fa-pinterest"></i> </a></li>
+                                 <li><a target="_blank" class="insta" 
+                                 href="https://www.instagram.com/daily_image_funda/"> <i class="fab fa-instagram"></i> </a></li>
                              </ul>
                          </div>
                     </div>
                     <div class="col-md-6 col-sm-12">
-                        <a id="img-download" href="" download>
+                        <a id="img-download" href="<?php echo $imgSrc; ?>" download>
                             <button class="w-100 n-button">
                                 <i class="fa fa-download"></i> Download
                             </button>

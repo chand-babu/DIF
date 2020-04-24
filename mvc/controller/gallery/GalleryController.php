@@ -21,4 +21,8 @@ class GalleryController {
     public function popularGalleryController(){
         return $this->gallery->popularGalleryModel();
     }
+
+    public function getGalleryImageController($data){
+        return $this->gallery->getGalleryImageModel($data);
+    }
 }
