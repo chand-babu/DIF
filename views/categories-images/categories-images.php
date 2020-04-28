@@ -159,6 +159,8 @@ echo '<input type="hidden" id="meta-tag" value="'.$responseGallery['data']['meta
                             <div class="card-body">
                                 <form id="comment-form">
                                     <div class="form-group">
+                                        <input id="blog-comment-check" type="hidden" name="blog_comment_check"
+                                        value="<?php echo empty($blogLisiting['data']['comment']); ?>">
                                         <input id="blog-id" type="hidden" name="blog_id"
                                         value="<?php echo $blogLisiting['data']['blg_id']; ?>">
                                         <label>Name</label>
@@ -176,32 +178,38 @@ echo '<input type="hidden" id="meta-tag" value="'.$responseGallery['data']['meta
                         </div>
 
                         <!-- Single Comment -->
-                        <div class="media mb-4">
-                            <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-                            <div class="media-body">
-                                <h5 class="mt-0">Commenter Name</h5>
-                                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                                <div class="text-right" style="cursor: pointer"  onclick="myFunction()">Reply</div>
-                                
-                                <div id="blog-reply" class="card1 my-4 d-none">
-                                    <h5 class="card-header">Reply on Comment:</h5>
-                                    <div class="card-body">
-                                        <form id="reply-form">
-                                            <div class="form-group">
-                                                <label>Name</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Comment</label>
-                                                <textarea class="form-control" rows="3"></textarea>
-                                            </div>
-                                            <button type="submit" class="btn btn-primary">Submit</button>
-                                        </form>
+                        <?php 
+                        $comment = json_decode($blogLisiting['data']['comment'], true);
+                            foreach ($comment as $key => $value) {
+                                echo '<div class="media mb-4">
+                                <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+                                <div class="media-body">
+                                    <h5 class="mt-0">'.$value['name'].'</h5>
+                                    '.$value['message'].'
+                                    <div class="text-right" style="cursor: pointer"  onclick="myFunction()">Reply</div>
+                                    
+                                    <div id="blog-reply" class="card1 my-4 d-none">
+                                        <h5 class="card-header">Reply on Comment:</h5>
+                                        <div class="card-body">
+                                            <form id="reply-form">
+                                                <div class="form-group">
+                                                    <label>Name</label>
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Comment</label>
+                                                    <textarea class="form-control" rows="3"></textarea>
+                                                </div>
+                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                            </form>
+                                        </div>
                                     </div>
+    
                                 </div>
-
-                            </div>
-                        </div>
+                            </div>';
+                            }
+                        ?>
+                        
 
                         <!-- Comment with nested comments -->
                         <div class="media mb-4">
@@ -274,4 +282,23 @@ echo '<input type="hidden" id="meta-tag" value="'.$responseGallery['data']['meta
         </div>
 
     </div>
+</div>
+<!-- Modal -->
+<div class="modal fade mt-5" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" 
+aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
 </div>

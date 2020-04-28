@@ -31,17 +31,20 @@ $(document).ready(function() {
             var form = new FormData(this);
             $.ajax({
                 type: "POST",
-                url: './../mvc/action/blog/commentAction.php',
+                url: './mvc/action/blog/commentAction.php',
                 data: form,
                 processData: false,
                 contentType: false,
                 success: function(data) {
                     console.log(data);
-                    // if (JSON.parse(data).result) {
-                    //     modelMessageCall('Message', 'We will contact you soon');
-                    // } else {
-                    //     modelMessageCall('Message', JSON.parse(data).message);
-                    // }
+                    if (JSON.parse(data).result) {
+                        modelMessageCall('Message', 'Comment Added');
+                        setTimeout(() => {
+                            location.reload();
+                        }, 2000);
+                    } else {
+                        modelMessageCall('Message', JSON.parse(data).message);
+                    }
                     // $('#contact-submit').removeClass('disabled');
                 },
                 error: function(jqXHR, exception) {
@@ -55,6 +58,13 @@ $(document).ready(function() {
         console.log($(this).val());
     });
 });
+
+function modelMessageCall(title, data){
+    $("#myModal").modal();
+    $("#myModal").css('color', 'black');
+    $("#myModal .modal-title").html(title);
+    $("#myModal .modal-body").html(data);
+}
 
 function myFunction(){
     $('#blog-reply').toggleClass('d-block');

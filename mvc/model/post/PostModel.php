@@ -38,7 +38,7 @@ class PostModel extends DatabaseService{
     }
 
     public function checkBlogPostModel($input) {
-        $query = "SELECT blg_id, cat_id, title, description, image_lg, image_sm, blg_status, created, modified, image_alt, post_url, content, meta_tag, meta_desc
+        $query = "SELECT blg_id, cat_id, title, description, image_lg, image_sm, blg_status, created, modified, image_alt, post_url, content, meta_tag, meta_desc, comment
         FROM blog WHERE post_url = :post_url LIMIT 1";
         try {
             $execute = $this->connection->prepare($query);
